@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MyCampusCare</title>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F5F6;--sf:#fff;--ink:#14283F;--mu:#5A6B7B;--med:#0E7C78;--mb:#DCF0EE;--co:#6A4C93;--cb:#EBE3F4;--ln:#D6DEE4;--bad:#B4402F;--ok:#2F7D4F;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1923;--sf:#16252F;--ink:#E7EEF3;--mu:#97A9B8;--med:#4FC3BC;--mb:#12383A;--co:#BCA2E6;--cb:#2A2040;--ln:#27384A;--bad:#E58A7B;--ok:#7CCB9A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1923;--sf:#16252F;--ink:#E7EEF3;--mu:#97A9B8;--med:#4FC3BC;--mb:#12383A;--co:#BCA2E6;--cb:#2A2040;--ln:#27384A;--bad:#E58A7B;--ok:#7CCB9A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.5 "Public Sans",system-ui,sans-serif;min-height:100vh}
+h1,h2,h3{font-family:"Familjen Grotesk","Public Sans",sans-serif;margin:0;letter-spacing:-.01em}
+h1{font-size:1.75rem;line-height:1.15}h2{font-size:1.25rem}h3{font-size:1.05rem}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--ln);background:var(--sf);border-radius:8px;padding:.55rem .9rem;min-height:44px}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--med);outline-offset:2px}
+button.pri{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+button.pri:disabled{opacity:.35;cursor:not-allowed}
+button.bad{color:var(--bad)}
+input,select{width:100%;padding:.6rem .7rem;border:1px solid var(--ln);border-radius:8px;background:var(--sf);min-height:44px}
+label{display:block;font-weight:500;font-size:.9rem;margin:.9rem 0 .3rem}
+.mu{color:var(--mu);font-size:.92rem}
+#app{display:flex;flex-direction:column;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.1rem;background:var(--ink);color:var(--bg)}
+.brand{font:700 1.15rem "Familjen Grotesk",sans-serif;display:flex;align-items:center;gap:.5rem}
+.brand i{width:22px;height:22px;border-radius:50% 50% 50% 4px;background:var(--med);display:inline-block;position:relative}
+.brand i:after{content:"";position:absolute;inset:0;background:linear-gradient(#fff,#fff) center/10px 3px no-repeat,linear-gradient(#fff,#fff) center/3px 10px no-repeat}
+.top button{background:transparent;color:inherit;border-color:rgba(255,255,255,.3);min-height:36px;padding:.2rem .7rem;font-size:.88rem}
+.body{flex:1;display:flex;flex-direction:column}
+nav{display:flex;position:sticky;bottom:0;background:var(--sf);border-top:1px solid var(--ln);order:2;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;border:0;border-radius:0;background:none;color:var(--mu);font-weight:500;border-top:3px solid transparent}
+nav button.on{color:var(--ink);border-top-color:var(--med);font-weight:600}
+main{padding:1.2rem 1.1rem 2rem;max-width:760px;width:100%;margin:0 auto}
+@media(min-width:820px){.body{flex-direction:row}nav{order:0;flex-direction:column;width:200px;position:static;border-top:0;border-right:1px solid var(--ln);padding:1rem .6rem;gap:.2rem}nav button{text-align:left;border-top:0;border-left:3px solid transparent;border-radius:6px}nav button.on{border-left-color:var(--med);background:var(--bg)}}
+.sec{margin-top:1.6rem}.sec>h2{margin-bottom:.6rem}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.svc button{text-align:left;padding:.9rem;border-radius:14px 14px 14px 4px;border-width:2px;line-height:1.3}
+.svc .m.on{background:var(--mb);border-color:var(--med)}.svc .c.on{background:var(--cb);border-color:var(--co)}
+.svc b{display:block;font-family:"Familjen Grotesk",sans-serif;font-size:1.1rem}
+.pro{display:block;width:100%;text-align:left;margin-bottom:.5rem;padding:.75rem .9rem;border-left-width:5px}
+.pro.m{border-left-color:var(--med)}.pro.c{border-left-color:var(--co)}.pro.on{background:var(--bg);border-color:var(--ink);border-left-width:5px}
+.days{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.3rem}
+.days button{flex:0 0 auto;text-align:center;min-width:64px;line-height:1.25}
+.days button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:.45rem;margin-top:.6rem}
+.slots button.on{background:var(--med);color:#fff;border-color:var(--med);font-weight:600}
+.slots button:disabled{background:transparent;color:var(--mu);text-decoration:line-through;opacity:.6;cursor:not-allowed}
+.slots button.off{background:var(--bg);text-decoration:none;font-style:italic}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:.9rem 1rem;margin-bottom:.6rem;border-left-width:5px}
+.card.m{border-left-color:var(--med)}.card.c{border-left-color:var(--co)}.card.x{opacity:.6}
+.tag{font-size:.8rem;padding:.1rem .55rem;border-radius:99px;background:var(--bg);border:1px solid var(--ln)}
+.tag.ok{color:var(--ok)}.tag.no{color:var(--bad)}
+.empty{border:1.5px dashed var(--ln);border-radius:12px;padding:1.2rem;text-align:center}
+.bar{display:flex;align-items:center;gap:.6rem;margin:.4rem 0;font-size:.9rem}.bar span:first-child{width:76px}
+.bar div{flex:1;height:12px;background:var(--ln);border-radius:3px;overflow:hidden}.bar div i{display:block;height:100%;background:var(--med)}
+.stats{display:flex;gap:1.6rem;flex-wrap:wrap}.stats b{font:700 1.9rem "Familjen Grotesk",sans-serif;display:block;line-height:1}
+table{width:100%;border-collapse:collapse;font-size:.92rem}td,th{text-align:left;padding:.5rem .4rem;border-bottom:1px solid var(--ln)}th{font-weight:600;color:var(--mu)}
+.who{display:grid;gap:.6rem;margin-top:1rem}
+.who button{text-align:left;padding:.8rem 1rem;border-radius:12px}
+.login{max-width:440px;margin:0 auto;padding:2rem 1.2rem}
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.65rem 1rem;border-radius:8px;z-index:9;max-width:90%}
+.stepper{display:inline-flex;align-items:center;gap:.4rem}.stepper button{min-width:36px;min-height:36px;padding:0}
+textarea{width:100%;padding:.6rem .7rem;border:1px solid var(--ln);border-radius:8px;background:var(--sf);color:inherit;font:inherit;resize:vertical}nav button.hp{color:var(--bad)}
+.clk{background:var(--sf);border-bottom:1px solid var(--ln);padding:.35rem 1.1rem;font-size:.85rem;color:var(--mu)}
+.cal{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:.7rem}.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}.cg b{font-weight:500;color:var(--mu);font-size:.8rem;padding:.2rem 0}.cd{min-height:48px;padding:.2rem 0;border:0;background:none;border-radius:8px;display:flex;flex-direction:column;align-items:center;gap:2px}.cd.on{background:var(--ink);color:var(--bg)}.cd.td span{font-weight:700;text-decoration:underline}.cd.na{color:var(--mu);opacity:.55}.cd em{display:flex;gap:2px;min-height:6px}.dot{width:6px;height:6px;border-radius:50%;display:inline-block}.dot.m{background:var(--med)}.dot.c{background:var(--co)}a{color:var(--med);font-weight:600}
+.top .r{display:flex;gap:.5rem;align-items:center}.top .gear{width:40px;padding:0;display:grid;place-items:center}.top .gear svg{width:20px;height:20px}
+.set{display:flex;justify-content:space-between;align-items:center;gap:1rem}.set button[aria-checked=true]{background:var(--med);color:#fff;border-color:var(--med);font-weight:600;min-width:64px}.set button[aria-checked=false]{min-width:64px}
+@media(prefers-reduced-motion:no-preference){.toast{animation:t .2s ease-out}@keyframes t{from{opacity:0}}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const TIMES=['09:00','10:00','11:00','12:00','14:00','15:00','16:00'];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const NOW=new Date(),TODAY=iso(NOW);const hm=()=>{const n=new Date();return String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0')};const isPast=(d,t)=>d<TODAY||(d===TODAY&&t<=hm());const DAYS=(()=>{const o=[],d=new Date();if(d.getDay()%6&&hm()<'16:00')o.push(iso(d));while(o.length<10){d.setDate(d.getDate()+1);if(d.getDay()%6)o.push(iso(d))}return o})();
+const dt=s=>new Date(s+'T00:00');
+const fD=s=>dt(s).toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+const fT=t=>{const h=+t.slice(0,2);return (h>12?h-12:h)+':00 '+(h>=12?'pm':'am')};
+let S;
+function seed(){return{user:null,tab:'home',nid:20,
+ staff:[{id:1,name:'Dr. Namara Winnie',svc:'m',role:'Physician',cap:2},{id:2,name:'Nurse Kiiza Brian',svc:'m',role:'Clinical nurse',cap:1},{id:3,name:'Akello Grace',svc:'c',role:'Counselor, stress and academics',cap:1},{id:4,name:'Mugisha Daniel',svc:'c',role:'Counselor, relationships and wellbeing',cap:1}],
+ apps:[[1,1,DAYS[0],'09:00','Student A'],[2,1,DAYS[0],'09:00','Student B'],[3,3,DAYS[0],'10:00','Student C'],[4,2,DAYS[0],'11:00','Student D'],[5,4,DAYS[1],'14:00','Student E'],[6,3,DAYS[1],'09:00','Student F'],[7,1,DAYS[1],'10:00','Student G'],[8,2,DAYS[2],'15:00','Student H']].map(a=>({id:a[0],sid:a[1],date:a[2],time:a[3],who:a[4],st:'booked'})),
+ off:{}}}
+try{S=JSON.parse(localStorage.getItem('mcc-v1'))}catch(e){}
+if(!S||!S.staff||!DAYS.includes((S.apps[0]||{date:DAYS[0]}).date)&&!S.apps.length)S=seed();
+const isF=a=>/^Student [A-H]$/.test(a.who);if(S.apps.some(a=>isF(a)&&!DAYS.includes(a.date))){S.nid=S.nid||20;S.apps=S.apps.filter(a=>!isF(a)).concat(seed().apps.filter(isF).map(a=>({...a,id:S.nid++})))}if(S.user&&S.user.d&&!DAYS.includes(S.user.d))S.user.d=DAYS[0];
+let bk={svc:null,sid:null,date:DAYS[0],time:null,re:null};let msg='';let adm={d:DAYS[0]};let rs=0;let lg={step:'role'};let cal={y:NOW.getFullYear(),m:NOW.getMonth(),sel:DAYS[0]};
+S.pref=Object.assign({theme:'auto',fs:100,sms:1,push:1,email:0,lead:24,nb:1},S.pref||{});
+function applyPref(){const r=document.documentElement;S.pref.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',S.pref.theme);r.style.fontSize=S.pref.fs+'%'}
+applyPref();
+const hs=p=>{let h=5381;for(const c of p)h=((h*33)^c.charCodeAt(0))>>>0;return h};
+const mail=n=>n.replace(/^(dr|nurse|mr|ms|mrs)\.?\s+/i,'').toLowerCase().replace(/[^a-z ]/g,'').trim().replace(/\s+/g,'.')+'@staff.ucu.ac.ug';
+function ensureAcc(){S.acc=S.acc||{};S.staff.forEach(s=>{if(!Object.values(S.acc).some(a=>a.sid==s.id))S.acc[mail(s.name)]={role:'staff',sid:s.id,name:s.name,h:hs('campus123')}});if(!S.acc['admin@admin.ucu.ac.ug'])S.acc['admin@admin.ucu.ac.ug']={role:'admin',name:'Administrator',h:hs('campus123')};S.contacts=S.contacts||{clinic:'',couns:'',sec:''};S.pend=S.pend||[];S.rej=S.rej||[]}
+ensureAcc();
+const REASONS={m:['Fever or flu','Injury','Routine check-up','Medication refill','Other'],c:['Stress or anxiety','Academic pressure','Relationships','Family or finances','Other']};
+function remText(){const p=S.pref,c=[p.sms&&'SMS',p.push&&'push notification',p.email&&'email'].filter(Boolean);return c.length?'We’ll remind you '+(p.lead==2?'2 hours before':'the day before')+' by '+c.join(', ')+'.':'Reminders are off. Turn them on in settings.'}
+const save=()=>{try{localStorage.setItem('mcc-v1',JSON.stringify(S))}catch(e){}};
+const st=id=>S.staff.find(s=>s.id==id);
+const live=a=>a.st==='booked';
+const left=(sid,d,t)=>{const s=st(sid);if(isPast(d,t))return 0;if((S.off[sid+d]||[]).includes(t))return -1;return s.cap-S.apps.filter(a=>live(a)&&a.sid==sid&&a.date==d&&a.time==t).length};
+const nextFree=sid=>{for(const d of DAYS)for(const t of TIMES)if(left(sid,d,t)>0)return fD(d)+', '+fT(t);return 'No openings this week'};
+const mine=()=>S.apps.filter(a=>a.who===S.user.name&&a.role!=='x').sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time));
+const cls=sid=>st(sid).svc;
+function toast(t){msg=t;render();setTimeout(()=>{msg='';render()},2600)}
+
+function login(){
+const R={student:['Student','students'],staff:['Staff','staff'],admin:['Administrator','admin']};
+const brand=`<div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div>`;
+if(lg.step==='role')return `<div class="login">${brand}<h1 style="margin-top:1.4rem">See who’s free and book before you walk over.</h1><p class="mu">Who are you signing in as?</p><div class="who">${Object.keys(R).map(k=>`<button data-a="role" data-r="${k}" style="border-left:5px solid ${k==='student'?'var(--med)':k==='staff'?'var(--co)':'var(--ink)'}"><b>${R[k][0]}</b><br><span class="mu">${k==='student'?'Like A12345@students.ucu.ac.ug':'Use your @'+R[k][1]+'.ucu.ac.ug email'}</span></button>`).join('')}</div></div>`;
+const r=lg.role,n=lg.mode==='new'&&r!=='admin',sf=n&&r==='staff';
+return `<div class="login">${brand}<button data-a="back" style="margin-top:1rem">Back</button><h1 style="margin-top:1rem">${R[r][0]} ${n?'registration':'sign in'}</h1>
+${lg.err?`<p role="alert" style="color:var(--bad);font-weight:500">${lg.err}</p>`:''}${lg.ok?`<p role="status" style="color:var(--ok);font-weight:500">${lg.ok}</p>`:''}
+${n?`<label for="nm">Full name</label><input id="nm" autocomplete="name">${sf?`<label for="pg">Professional role</label><input id="pg" placeholder="e.g. Nurse or Counselor"><label for="sv">Service</label><select id="sv"><option value="m">Medical</option><option value="c">Counseling</option></select>`:`<label for="pg">Programme</label><input id="pg" placeholder="e.g. BSc Computer Science">`}`:''}
+<label for="em">University email</label><input id="em" type="email" value="${esc(lg.email||'')}" placeholder="${r==='student'?'A12345':'name'}@${R[r][1]}.ucu.ac.ug" autocomplete="username">
+<label for="pw">Password</label><input id="pw" type="password" autocomplete="${n?'new-password':'current-password'}">
+<button class="pri" style="margin-top:1rem;width:100%" data-a="signin">${sf?'Request account':n?'Create account':'Sign in'}</button>
+${r!=='admin'?`<p style="text-align:center"><button data-a="mode" style="border:0;background:none;text-decoration:underline">${n?'I already have an account':r==='staff'?'New staff? Request an account':'New student? Create an account'}</button></p>`:''}${r==='staff'&&!n?'<p class="mu">Demo: namara.winnie@staff.ucu.ac.ug, password campus123.</p>':''}${r==='admin'?'<p class="mu">Demo: admin@admin.ucu.ac.ug, password campus123.</p>':''}${sf?'<p class="mu">An administrator must approve your request before you can sign in.</p>':''}</div>`}
+function loginOld(){return `<div class="login"><div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div>
+<h1 style="margin-top:1.4rem">See who’s free and book before you walk over.</h1>
+<p class="mu">Medical and counseling appointments for students, with schedules kept up to date by the staff themselves.</p>
+<label for="nm">Your name</label><input id="nm" placeholder="e.g. Atuhaire Ian" autocomplete="name">
+<label for="pg">Programme</label><input id="pg" placeholder="e.g. BSc Computer Science">
+<button class="pri" style="margin-top:1rem;width:100%" data-a="stu">Create account and sign in</button>
+<p class="mu" style="margin-top:1.8rem">Staff and administrators (demo sign-in)</p>
+<div class="who">${S.staff.map(s=>`<button data-a="staff" data-id="${s.id}"><b>${esc(s.name)}</b><br><span class="mu">${s.role}</span></button>`).join('')}<button data-a="admin"><b>Administrator</b><br><span class="mu">Services, capacity, staff and reports</span></button></div></div>`}
+
+function dayStrip(sel,a){return `<div class="days">${DAYS.map(d=>`<button class="${d==sel?'on':''}" data-a="${a}" data-d="${d}">${dt(d).toLocaleDateString('en-GB',{weekday:'short'})}<br><b>${dt(d).getDate()}</b> ${dt(d).toLocaleDateString('en-GB',{month:'short'})}</button>`).join('')}</div>`}
+
+function appCard(a){const s=st(a.sid);const past=a.st!=='booked'||a.date<TODAY;
+return `<div class="card ${s.svc} ${a.st==='cancelled'?'x':''}"><div class="row sp"><b>${fD(a.date)} at ${fT(a.time)}</b><span class="tag ${a.st==='completed'?'ok':a.st==='cancelled'||a.st==='noshow'?'no':''}">${a.st==='booked'?'Confirmed':a.st==='completed'?'Attended':a.st==='noshow'?'Missed':'Cancelled'}</span></div>
+<div>${esc(s.name)}</div><div class="mu">${s.svc==='m'?'Medical':'Counseling'}${a.fu?', follow-up':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}
+${past?'':`<div class="mu" style="margin-top:.3rem">${remText()}</div><div class="row" style="margin-top:.6rem"><button data-a="re" data-id="${a.id}">Reschedule</button><button class="bad" data-a="cx" data-id="${a.id}">Cancel</button></div>`}</div>`}
+
+function home(){const m=mine(),up=m.filter(a=>live(a)&&a.date>=TODAY);
+return `<h1>Hello, ${esc(S.user.name.split(' ')[0])}</h1><p class="mu">${S.user.prog?esc(S.user.prog):'Student'}</p><button class="bad" data-a="tab" data-t="help" style="width:100%;margin-top:.8rem">Need urgent help? See emergency contacts</button>
+<div class="sec"><h2>Your next visit</h2>${up.length?appCard(up[0]):`<div class="empty"><p style="margin:0 0 .6rem">You have nothing booked.</p><button class="pri" data-a="tab" data-t="book">Book an appointment</button></div>`}</div>
+<div class="sec"><h2>Earliest openings</h2>${S.staff.map(s=>`<div class="card ${s.svc}"><b>${esc(s.name)}</b><div class="mu">${s.role}</div><div>${nextFree(s.id)}</div></div>`).join('')}</div>`}
+
+function book(){const pros=S.staff.filter(s=>s.svc===bk.svc);
+return `<h1>${bk.re?'Reschedule':'Book an appointment'}</h1>
+<div class="sec"><h2>What do you need?</h2><div class="svc"><button class="m ${bk.svc==='m'?'on':''}" data-a="svc" data-v="m"><b>Medical</b><span class="mu">Doctor or nurse</span></button><button class="c ${bk.svc==='c'?'on':''}" data-a="svc" data-v="c"><b>Counseling</b><span class="mu">Private one-to-one</span></button></div>
+${bk.svc==='c'?'<p class="mu">Counseling sessions are visible only to you and your counselor.</p>':''}</div>
+${bk.svc?`<div class="sec"><h2>Choose who to see</h2>${pros.map(s=>`<button class="pro ${s.svc} ${bk.sid==s.id?'on':''}" data-a="pro" data-id="${s.id}"><b>${esc(s.name)}</b><br><span class="mu">${s.role}. Earliest: ${nextFree(s.id)}</span></button>`).join('')}</div>`:''}
+${bk.sid?`<div class="sec"><h2>Pick a time</h2>${calendar(bk.date)}${agenda(bk.date)}<div class="slots">${TIMES.map(t=>{const l=left(bk.sid,bk.date,t);return `<button class="${bk.time==t?'on':''} ${l<0?'off':''}" ${l<=0?'disabled':''} data-a="time" data-t="${t}">${fT(t)}${isPast(bk.date,t)?'<br><small>passed</small>':l<0?'<br><small>away</small>':l==0?'<br><small>full</small>':''}</button>`}).join('')}</div></div>`:''}
+${bk.time?`<div class="sec card ${cls(bk.sid)}"><b>${esc(st(bk.sid).name)}</b><div>${fD(bk.date)} at ${fT(bk.time)}</div><label for="rsn">Reason for visit</label><select id="rsn">${REASONS[cls(bk.sid)].map(r=>`<option${r===bk.reason?' selected':''}>${r}</option>`).join('')}</select><p class="mu">Only you and ${esc(st(bk.sid).name)} will see this.</p><button class="pri" style="margin-top:.7rem;width:100%" data-a="confirm">${bk.re?'Confirm new time':'Confirm booking'}</button></div>`:''}`}
+
+function appts(){const m=mine();const u=m.filter(a=>live(a)&&a.date>=TODAY),h=m.filter(a=>!(live(a)&&a.date>=TODAY));
+return `<h1>My appointments</h1><div class="sec">${calendar(cal.sel)}${agenda(cal.sel)}</div><div class="sec"><h2>Upcoming</h2>${u.length?u.map(appCard).join(''):`<div class="empty">No upcoming appointments.</div>`}</div>${h.length?`<div class="sec"><h2>History</h2>${h.map(appCard).join('')}</div>`:''}`}
+
+function staffToday(){const id=S.user.id,s=st(id),d=S.user.d||DAYS[0];
+const list=S.apps.filter(a=>a.sid==id&&a.date==d&&a.st!=='cancelled').sort((x,y)=>x.time.localeCompare(y.time));
+return `<h1>${s.svc==='m'?'Clinic':'Counseling'} schedule</h1><p class="mu">${esc(s.name)}</p><div class="sec">${dayStrip(d,'sday')}</div>
+<div class="sec">${list.length?list.map(a=>`<div class="card ${s.svc}"><div class="row sp"><b>${fT(a.time)}</b><span class="tag ${a.st==='completed'?'ok':a.st==='noshow'?'no':''}">${a.st==='completed'?'Done':a.st==='noshow'?'Missed':'Waiting'}</span></div><div>${esc(a.who)}${a.fu?' (follow-up)':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}${a.st==='booked'?`<label for="nt${a.id}">Private note, visible only to you</label><textarea id="nt${a.id}" rows="2"></textarea><div class="row" style="margin-top:.6rem"><button data-a="done" data-id="${a.id}">Mark complete</button><button data-a="donefu" data-id="${a.id}">Complete and book follow-up</button><button data-a="noshow" data-id="${a.id}">No-show</button></div>`:(a.note?`<p class="mu" style="margin:.4rem 0 0">Note: ${esc(a.note)}</p>`:'')}</div>`).join(''):'<div class="empty">No one is booked for this day.</div>'}</div>`}
+
+function staffAvail(){const id=S.user.id,d=S.user.d||DAYS[0];
+return `<h1>My availability</h1><p class="mu">Tap a time to mark yourself away. Students stop seeing it straight away.</p><div class="sec">${dayStrip(d,'sday')}</div>
+<div class="slots">${TIMES.map(t=>{const off=(S.off[id+d]||[]).includes(t);const n=S.apps.filter(a=>live(a)&&a.sid==id&&a.date==d&&a.time==t).length;return `<button class="${off?'off':'on'}" ${n?'disabled':''} data-a="away" data-t="${t}">${fT(t)}<br><small>${n?n+' booked':off?'away':'open'}</small></button>`}).join('')}</div>`}
+
+function adminHome(){const c=k=>S.apps.filter(a=>a.st===k).length;
+const util=DAYS.map(d=>{const cap=S.staff.reduce((n,s)=>n+s.cap*TIMES.length,0);const b=S.apps.filter(a=>live(a)&&a.date==d).length;return[d,b,cap]});
+return `<h1>Overview</h1><div class="sec stats"><div><b>${c('booked')}</b><span class="mu">upcoming</span></div><div><b>${c('completed')}</b><span class="mu">attended</span></div><div><b>${c('cancelled')}</b><span class="mu">cancelled</span></div></div>
+<div class="sec"><h2>How full each day is</h2>${util.map(u=>`<div class="bar"><span>${fD(u[0])}</span><div><i style="width:${Math.min(100,u[1]/u[2]*100*3)}%"></i></div><span>${u[1]} booked</span></div>`).join('')}</div>
+<div class="sec"><h2>All appointments</h2><div style="overflow-x:auto"><table><tr><th>When</th><th>Student</th><th>With</th><th>Status</th></tr>${S.apps.slice().sort((x,y)=>(x.date+x.time).localeCompare(y.date+y.time)).map(a=>`<tr><td>${fD(a.date)}, ${fT(a.time)}</td><td>${esc(a.who)}</td><td>${esc(st(a.sid).name)}</td><td>${a.st}</td></tr>`).join('')}</table></div></div>`}
+
+function adminStaff(){return `<h1>Staff and capacity</h1>${S.pend.length?`<div class="sec"><h2>Waiting for approval</h2>${S.pend.map((p,i)=>`<div class="card ${p.svc}"><b>${esc(p.name)}</b><div class="mu">${esc(p.role)}, ${p.svc==='m'?'Medical':'Counseling'}</div><div class="mu">${esc(p.email)}</div><div class="row" style="margin-top:.6rem"><button class="pri" data-a="appr" data-id="${i}">Approve</button><button class="bad" data-a="decl" data-id="${i}">Decline</button></div></div>`).join('')}</div>`:''}<p class="mu">Capacity is how many students one person can see in the same hour.</p><div class="sec">${S.staff.map(s=>`<div class="card ${s.svc}"><div class="row sp"><div><b>${esc(s.name)}</b><div class="mu">${s.svc==='m'?'Medical':'Counseling'}, ${esc(s.role)}</div></div><div class="stepper"><button data-a="cap" data-id="${s.id}" data-v="-1" aria-label="Fewer">−</button><b>${s.cap}</b><button data-a="cap" data-id="${s.id}" data-v="1" aria-label="More">+</button></div></div></div>`).join('')}</div>
+<div class="sec"><h2>Register new staff</h2><label for="sn">Full name</label><input id="sn"><label for="sr">Role</label><input id="sr" placeholder="e.g. Nutritionist"><label for="ss">Service</label><select id="ss"><option value="m">Medical</option><option value="c">Counseling</option></select><button class="pri" style="margin-top:1rem" data-a="addstaff">Add staff member</button></div>
+<div class="sec"><h2>Emergency contacts</h2><p class="mu">Shown to every student on the Help screen.</p><label for="c1">Campus clinic</label><input id="c1" type="tel" value="${esc(S.contacts.clinic)}"><label for="c2">Counseling office</label><input id="c2" type="tel" value="${esc(S.contacts.couns)}"><label for="c3">Campus security</label><input id="c3" type="tel" value="${esc(S.contacts.sec)}"><button class="pri" style="margin-top:1rem" data-a="savect">Save contacts</button></div>`}
+
+function calendar(sel){const first=new Date(cal.y,cal.m,1),title=first.toLocaleDateString('en-GB',{month:'long',year:'numeric'}),lead=(first.getDay()+6)%7,dim=new Date(cal.y,cal.m+1,0).getDate(),my={};
+mine().filter(live).forEach(a=>{(my[a.date]=my[a.date]||[]).push(cls(a.sid))});
+let c='';for(let i=0;i<lead;i++)c+='<span></span>';
+for(let d=1;d<=dim;d++){const ds=iso(new Date(cal.y,cal.m,d)),dots=(my[ds]||[]).map(k=>`<i class="dot ${k}"></i>`).join('');c+=`<button class="cd ${ds===sel?'on':''} ${ds===TODAY?'td':''} ${DAYS.includes(ds)?'':'na'}" data-a="cday" data-d="${ds}" aria-label="${fD(ds)}"><span>${d}</span><em>${dots}</em></button>`}
+return `<div class="cal"><div class="row sp"><button data-a="cmon" data-v="-1" aria-label="Previous month">Prev</button><b>${title}</b><button data-a="cmon" data-v="1" aria-label="Next month">Next</button></div><div class="cg" style="margin-top:.5rem">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<b>${x}</b>`).join('')}${c}</div><p class="mu" style="margin:.5rem 0 0"><i class="dot m"></i> Medical &nbsp; <i class="dot c"></i> Counseling &nbsp; Dimmed days are closed for booking</p></div>`}
+function agenda(sel){const l=mine().filter(a=>live(a)&&a.date===sel).sort((x,y)=>x.time.localeCompare(y.time));return `<p class="mu" style="margin:.7rem 0 .3rem"><b style="color:var(--ink)">${fD(sel)}</b>${sel===TODAY?' (today)':''}</p>${l.length?l.map(a=>`<div class="card ${cls(a.sid)}" style="padding:.5rem .8rem"><b>${fT(a.time)}</b> with ${esc(st(a.sid).name)}</div>`).join(''):'<p class="mu" style="margin:0">Nothing booked on this day.</p>'}`}
+function helpView(){const c=S.contacts,row=(l,n,k)=>`<div class="card ${k||''}"><b>${l}</b><div>${n?`<a href="tel:${esc(n)}">${esc(n)}</a>`:'<span class="mu">Not added yet. Ask the administrator to add it.</span>'}</div></div>`;
+return `<h1>Need help now?</h1><div class="card" style="border-left-color:var(--bad);margin-top:1rem"><b>In an emergency, call 999 or 112 first.</b><p style="margin:.3rem 0 0">Go to the nearest person who can help. This app is for booking and does not replace emergency care.</p></div><div class="sec"><h2>Campus contacts</h2>${row('Campus clinic',c.clinic,'m')}${row('Counseling office',c.couns,'c')}${row('Campus security',c.sec)}</div><div class="sec"><h2>If you are struggling</h2><p>You don’t have to wait for an appointment. Call the counseling office, or tell someone you trust and ask them to stay with you. If you might hurt yourself, call 999 or 112 now.</p><button class="pri" data-a="bkc">Book a counseling session</button></div>`}
+function reportsView(){const A=S.apps,n=k=>A.filter(a=>a.st===k).length,att=n('completed'),ms=n('noshow'),act=A.filter(a=>a.st!=='cancelled');
+const bars=rows=>{const mx=Math.max(1,...rows.map(r=>r[1]));return rows.map(r=>`<div class="bar"><span>${r[0]}</span><div><i style="width:${r[1]/mx*100}%"></i></div><span>${r[1]}</span></div>`).join('')};
+const med=act.filter(a=>cls(a.sid)==='m').length;
+const csv='date,time,service,professional,status\n'+A.map(a=>[a.date,a.time,cls(a.sid)==='m'?'Medical':'Counseling','"'+st(a.sid).name+'"',a.st].join(',')).join('\n');
+return `<h1>Reports</h1><p class="mu">Totals only. Student names, reasons and notes are never included.</p>
+<div class="sec stats"><div><b>${att+ms?Math.round(ms/(att+ms)*100):0}%</b><span class="mu">no-show rate</span></div><div><b>${act.length}</b><span class="mu">appointments</span></div></div>
+<div class="sec"><h2>Medical and counseling</h2>${bars([['Medical',med],['Counseling',act.length-med]])}</div>
+<div class="sec"><h2>Busiest hours</h2>${bars(TIMES.map(t=>[fT(t),act.filter(a=>a.time===t).length]))}</div>
+<div class="sec"><h2>Busiest days</h2>${bars(DAYS.map(d=>[fD(d),act.filter(a=>a.date===d).length]))}</div>
+<div class="sec"><h2>Workload by professional</h2><table><tr><th>Name</th><th>Seen</th><th>Upcoming</th></tr>${S.staff.map(s=>`<tr><td>${esc(s.name)}</td><td>${A.filter(a=>a.sid==s.id&&a.st==='completed').length}</td><td>${A.filter(a=>a.sid==s.id&&a.st==='booked').length}</td></tr>`).join('')}</table></div>
+<div class="sec"><h2>Export</h2><textarea id="csv" rows="6" readonly aria-label="Report data as CSV">${esc(csv)}</textarea><button class="pri" style="margin-top:.6rem" data-a="copycsv">Copy CSV</button><p class="mu">Paste into Excel or Google Sheets.</p></div>`}
+function settings(){const p=S.pref,u=S.user,r=u.role;
+const seg=(k,o)=>`<div class="days">${o.map(x=>`<button class="${p[k]==x[0]?'on':''}" data-a="pref" data-k="${k}" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>`;
+const tg=(k,l,n)=>`<div class="card set" style="border-left-width:1px"><div>${l}${n?`<div class="mu">${n}</div>`:''}</div><button role="switch" aria-checked="${p[k]?'true':'false'}" data-a="tog" data-k="${k}">${p[k]?'On':'Off'}</button></div>`;
+const who=r==='student'?esc(u.name):r==='staff'?esc(st(u.id).name):'Administrator';
+return `<h1>Settings</h1><p class="mu">Signed in as ${who}</p>
+<div class="sec"><h2>Appearance</h2><label>Theme</label>${seg('theme',[['auto','Match device'],['light','Light'],['dark','Dark']])}<label>Text size</label>${seg('fs',[[90,'Smaller'],[100,'Default'],[115,'Larger'],[130,'Largest']])}</div>
+${r==='student'?`<div class="sec"><h2>Reminders</h2>${tg('sms','SMS')}${tg('push','Push notifications')}${tg('email','Email')}<label>Send reminder</label>${seg('lead',[[24,'The day before'],[2,'2 hours before']])}</div>
+<div class="sec"><h2>Your details</h2><label for="pn">Name</label><input id="pn" value="${esc(u.name)}" autocomplete="name"><label for="pp">Programme</label><input id="pp" value="${esc(u.prog||'')}"><button class="pri" style="margin-top:1rem" data-a="prof">Save details</button></div>`:''}
+${r==='staff'?`<div class="sec"><h2>Notifications</h2>${tg('nb','New bookings and cancellations','Get told when a student books or cancels with you.')}</div>`:''}
+<div class="sec"><h2>Account and data</h2><div class="row"><button data-a="out">Sign out</button><button class="bad" data-a="reset">Reset demo data</button></div><p class="mu">Everything in this demo is stored only in this browser.</p></div>`}
+function tick(){const e=$('#clk');if(e)e.textContent=new Date().toLocaleString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true})}
+function render(){
+let h;
+if(!S.user)h=login();else{const r=S.user.role;
+const tabs=r==='student'?[['home','Home'],['book','Book'],['mine','Appointments'],['help','Help']]:r==='staff'?[['today','Schedule'],['avail','Availability']]:[['ov','Overview'],['rep','Reports'],['sf','Staff'+(S.pend.length?' ('+S.pend.length+')':'')]];
+if(!tabs.find(t=>t[0]===S.tab)&&S.tab!=='set')S.tab=tabs[0][0];
+const v={home,book,mine:appts,today:staffToday,avail:staffAvail,ov:adminHome,sf:adminStaff,rep:reportsView,help:helpView,set:settings}[S.tab]();
+h=`<div class="top"><div class="brand"><i></i>MyCampusCare</div><div class="r"><button class="gear" data-a="gear" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button><button data-a="out">Sign out</button></div></div><div class="clk" id="clk"></div><div class="body"><main>${v}</main><nav>${tabs.map(t=>`<button class="${S.tab==t[0]?'on':''}${t[0]==='help'?' hp':''}" data-a="tab" data-t="${t[0]}">${t[1]}</button>`).join('')}</nav></div>`}
+const y=scrollY;$('#app').innerHTML=h+(msg?`<div class="toast" role="status">${msg}</div>`:'');tick();scrollTo(0,y)}
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const d=b.dataset,a=d.a,id=+d.id;
+if(a==='role'){lg={step:'cred',role:d.r,mode:'in',err:'',email:''}}
+else if(a==='back'){lg={step:'role'}}
+else if(a==='mode'){lg.email=$('#em').value;lg.mode=lg.mode==='new'?'in':'new';lg.err=''}
+else if(a==='signin'){const em=($('#em').value||'').trim().toLowerCase(),pw=$('#pw').value;lg.email=em;
+const dom={student:'@students.ucu.ac.ug',staff:'@staff.ucu.ac.ug',admin:'@admin.ucu.ac.ug'}[lg.role];
+const bad=m=>{lg.err=m;lg.ok='';render()};
+if(lg.role==='student'?!/^[a-z]\d{5}@students\.ucu\.ac\.ug$/.test(em):(!em.endsWith(dom)||em.length<=dom.length))return bad(lg.role==='student'?'Use your student email: a letter and five digits, like A12345'+dom+'.':'Use your '+dom.slice(1)+' email address, for example name'+dom+'.');
+if(lg.mode==='new'&&lg.role==='student'){const nm=$('#nm').value.trim();if(!nm)return bad('Enter your full name.');if(S.acc[em])return bad('That email already has an account. Sign in instead.');if(pw.length<6)return bad('Choose a password of at least 6 characters.');S.acc[em]={role:'student',name:nm,prog:$('#pg').value.trim(),h:hs(pw)}}
+if(lg.mode==='new'&&lg.role==='staff'){const nm=$('#nm').value.trim(),rl=$('#pg').value.trim();if(!nm||!rl)return bad('Enter your full name and professional role.');if(S.acc[em]||S.pend.some(p=>p.email===em))return bad('That email already has an account or a pending request.');if(pw.length<6)return bad('Choose a password of at least 6 characters.');S.pend.push({email:em,name:nm,role:rl,svc:$('#sv').value,h:hs(pw)});S.rej=S.rej.filter(x=>x!==em);save();lg={step:'cred',role:'staff',mode:'in',err:'',ok:'Request sent. You can sign in once an administrator approves it.',email:em};render();return}
+if(lg.role==='staff'&&!S.acc[em]){if(S.pend.some(p=>p.email===em))return bad('Your request is still waiting for admin approval.');if(S.rej.includes(em))return bad('Your request was declined. Contact the administrator.')}
+const ac=S.acc[em];
+if(!ac||ac.role!==lg.role)return bad(lg.role==='student'?'No student account with this email. Create one first.':'No '+lg.role+' account with this email. An administrator creates these.');
+if(ac.h!==hs(pw))return bad('Wrong password. Try again.');
+S.user=lg.role==='student'?{role:'student',email:em,name:ac.name,prog:ac.prog}:lg.role==='staff'?{role:'staff',email:em,id:ac.sid,d:DAYS[0]}:{role:'admin',email:em};
+S.tab=lg.role==='student'?'home':lg.role==='staff'?'today':'ov';lg={step:'role'}}
+else if(a==='stu'){const n=$('#nm').value.trim();if(!n){$('#nm').focus();return}S.user={role:'student',name:n,prog:$('#pg').value.trim()};S.tab='home'}
+else if(a==='staff'){S.user={role:'staff',id,d:DAYS[0]};S.tab='today'}
+else if(a==='admin'){S.user={role:'admin'};S.tab='ov'}
+else if(a==='out'){lg={step:'role'};S.user=null;bk={svc:null,sid:null,date:DAYS[0],time:null,re:null}}
+else if(a==='tab')S.tab=d.t;
+else if(a==='svc'){bk.svc=d.v;bk.sid=null;bk.time=null}
+else if(a==='pro'){bk.sid=id;bk.time=null}
+else if(a==='day'){bk.date=d.d;bk.time=null}
+else if(a==='time')bk.time=d.t;
+else if(a==='sday')S.user.d=d.d;
+else if(a==='confirm'){if(bk.re){const o=S.apps.find(x=>x.id==bk.re);if(o)o.st='cancelled'}
+S.apps.push({id:S.nid++,sid:bk.sid,date:bk.date,time:bk.time,who:S.user.name,st:'booked',reason:($('#rsn')||{}).value||''});
+const w=st(bk.sid).name;bk={svc:null,sid:null,date:DAYS[0],time:null,re:null};S.tab='mine';save();toast('Booked with '+esc(w)+'. A reminder will follow.');return}
+else if(a==='cx'){S.apps.find(x=>x.id==id).st='cancelled';save();toast('Appointment cancelled. The slot is open again.');return}
+else if(a==='re'){const o=S.apps.find(x=>x.id==id);bk={svc:st(o.sid).svc,sid:o.sid,date:o.date,time:null,re:id,reason:o.reason};S.tab='book'}
+else if(a==='done'||a==='donefu'){const o=S.apps.find(x=>x.id==id);o.st='completed';const nt=$('#nt'+id);if(nt&&nt.value.trim())o.note=nt.value.trim();let m='Marked complete.';
+if(a==='donefu'){const i=DAYS.indexOf(o.date),nd=DAYS[i+1];
+if(nd&&left(o.sid,nd,o.time)>0){S.apps.push({id:S.nid++,sid:o.sid,date:nd,time:o.time,who:o.who,st:'booked',fu:1,reason:o.reason});m='Follow-up booked for '+fD(nd)+'. Reminder sent.'}else m='Marked complete. No matching slot next day, so book the follow-up manually.'}
+save();toast(m);return}
+else if(a==='away'){const k=S.user.id+S.user.d;const l=S.off[k]=S.off[k]||[];const i=l.indexOf(d.t);i<0?l.push(d.t):l.splice(i,1)}
+else if(a==='cap'){const s=st(id);s.cap=Math.max(1,Math.min(5,s.cap+ +d.v))}
+else if(a==='appr'){const p=S.pend[id];S.staff.push({id:S.nid++,name:p.name,svc:p.svc,role:p.role,cap:1});S.acc[p.email]={role:'staff',sid:S.nid-1,name:p.name,h:p.h};S.pend.splice(id,1);save();toast(esc(p.name)+' approved. They can sign in now.');return}
+else if(a==='decl'){const p=S.pend.splice(id,1)[0];S.rej.push(p.email);save();toast('Request declined.');return}
+else if(a==='cday'){if(S.tab==='book'){if(DAYS.includes(d.d)){bk.date=d.d;bk.time=null}else{toast('That day isn’t open for booking. Pick a weekday in the next two weeks.');return}}else cal.sel=d.d}
+else if(a==='cmon'){const x=new Date(cal.y,cal.m+ +d.v,1);cal.y=x.getFullYear();cal.m=x.getMonth()}
+else if(a==='noshow'){S.apps.find(x=>x.id==id).st='noshow';save();toast('Marked as no-show.');return}
+else if(a==='copycsv'){const t=$('#csv');t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}toast(ok?'CSV copied. Paste it into Excel or Sheets.':'Press and hold the text to copy it.');return}
+else if(a==='savect'){S.contacts={clinic:$('#c1').value.trim(),couns:$('#c2').value.trim(),sec:$('#c3').value.trim()};save();toast('Emergency contacts saved.');return}
+else if(a==='bkc'){bk={svc:'c',sid:null,date:DAYS[0],time:null,re:null};S.tab='book'}
+else if(a==='gear')S.tab='set';
+else if(a==='pref'){S.pref[d.k]=isNaN(d.v)?d.v:+d.v;applyPref()}
+else if(a==='tog')S.pref[d.k]=S.pref[d.k]?0:1;
+else if(a==='prof'){const n=$('#pn').value.trim();if(!n){toast('Name can’t be empty.');return}const o=S.user.name;S.apps.forEach(x=>{if(x.who===o)x.who=n});S.user.name=n;S.user.prog=$('#pp').value.trim();if(S.acc[S.user.email]){S.acc[S.user.email].name=n;S.acc[S.user.email].prog=S.user.prog}save();toast('Details saved.');return}
+else if(a==='reset'){if(!rs){rs=1;toast('Tap Reset demo data again to erase all bookings.');setTimeout(()=>rs=0,4000);return}rs=0;const p=S.pref;S=seed();S.pref=p;ensureAcc();save();toast('Demo data reset. Sign in again.');return}
+else if(a==='addstaff'){const n=$('#sn').value.trim(),r=$('#sr').value.trim();if(!n||!r){toast('Add a name and a role first.');return}
+S.staff.push({id:S.nid++,name:n,role:r,svc:$('#ss').value,cap:1});ensureAcc();toast(esc(n)+' added. Sign-in: '+mail(n)+', temporary password campus123.');save();return}
+save();render()});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&!S.user&&lg.step==='cred'&&e.target.tagName==='INPUT'){const b=document.querySelector('[data-a=signin]');if(b)b.click()}});
+setInterval(tick,15000);
+render();
+</script>
+</body>
+</html>
