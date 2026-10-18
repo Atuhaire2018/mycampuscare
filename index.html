@@ -98,9 +98,21 @@ function applyPref(){const r=document.documentElement;S.pref.theme==='auto'?r.re
 applyPref();
 const hs=p=>{let h=5381;for(const c of p)h=((h*33)^c.charCodeAt(0))>>>0;return h};
 const mail=n=>n.replace(/^(dr|nurse|mr|ms|mrs)\.?\s+/i,'').toLowerCase().replace(/[^a-z ]/g,'').trim().replace(/\s+/g,'.')+'@staff.ucu.ac.ug';
-function ensureAcc(){S.acc=S.acc||{};S.staff.forEach(s=>{if(!Object.values(S.acc).some(a=>a.sid==s.id))S.acc[mail(s.name)]={role:'staff',sid:s.id,name:s.name,h:hs('campus123')}});if(!S.acc['admin@admin.ucu.ac.ug'])S.acc['admin@admin.ucu.ac.ug']={role:'admin',name:'Administrator',h:hs('campus123')};S.contacts=S.contacts||{clinic:'',couns:'',sec:''};S.pend=S.pend||[];S.rej=S.rej||[]}
+function ensureAcc(){S.acc=S.acc||{};S.staff.forEach(s=>{if(!Object.values(S.acc).some(a=>a.sid==s.id))S.acc[mail(s.name)]={role:'staff',sid:s.id,name:s.name,h:hs('campus123')}});if(!S.acc['admin@admin.ucu.ac.ug'])S.acc['admin@admin.ucu.ac.ug']={role:'admin',name:'Administrator',h:hs('campus123')};S.contacts=S.contacts||{clinic:'',couns:'',sec:''};S.pend=S.pend||[];S.rej=S.rej||[];S.notif=S.notif||[];S.audit=S.audit||[];S.wait=S.wait||[];S.fb=S.fb||[]}
 ensureAcc();
 const REASONS={m:['Fever or flu','Injury','Routine check-up','Medication refill','Other'],c:['Stress or anxiety','Academic pressure','Relationships','Family or finances','Other']};
+const log=x=>S.audit.push({t:Date.now(),who:(S.user&&(S.user.name||S.user.role))||'system',a:x});
+const tell=(to,x)=>S.notif.push({to,x,t:Date.now(),r:0});
+const me=()=>S.user.role==='student'?S.user.name:S.user.role==='staff'?st(S.user.id).name:'Administrator';
+const fDT=t=>new Date(t).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'numeric',minute:'2-digit'});
+const TIPS=['Short walks and regular meals make exam weeks easier on your body and mind.','Sleeping under a treated mosquito net helps protect you from malaria.','Washing hands with soap before eating helps prevent stomach infections.','Counseling is for everyday pressure too, not only for crises.'];
+const LOGGED={confirm:'Booked an appointment',cx:'Cancelled an appointment',done:'Completed an appointment',donefu:'Completed an appointment and booked a follow-up',noshow:'Marked a no-show',q:'Updated check-in',refer:'Sent a referral suggestion',dayoff:'Marked a whole day away',away:'Changed availability',appr:'Approved a staff request',decl:'Declined a staff request',addstaff:'Added a staff member',savect:'Edited emergency contacts',agree:'Accepted the privacy notice',out:'Signed out',fb:'Left a rating',wait:'Joined a waitlist'};
+function freed(o){S.wait=S.wait.filter(w=>{if(w.sid==o.sid&&w.date==o.date&&w.time==o.time){tell(w.who,'A slot opened with '+st(o.sid).name+' on '+fD(o.date)+' at '+fT(o.time)+'. Book it before someone else does.');return false}return true})}
+const queueLine=a=>{const n=S.apps.filter(x=>x.sid==a.sid&&x.date==a.date&&x.st==='booked'&&(x.time<a.time||(x.time===a.time&&x.id<a.id))).length;return `<div class="mu">${a.q==='seeing'?'You are being seen now.':n+' booked ahead of you today'+(a.q==='arrived'?'. You are checked in.':'.')}</div>`};
+function consent(){return `<div class="login"><div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div><h1 style="margin-top:1.2rem">Before you start</h1><p>We store your name, programme, appointments and the reason you give for a visit. Only you and the professional you book can see the reason. Staff notes stay with that professional. Administrators see totals and appointment times, never reasons or notes.</p><p class="mu">This follows the principles of Uganda’s Data Protection and Privacy Act, 2019. You can stop using the service at any time.</p><label style="display:flex;gap:.5rem;align-items:center;font-weight:400"><input type="checkbox" id="cs" style="width:auto;min-height:0"> I understand and agree</label><button class="pri" style="width:100%;margin-top:1rem" data-a="agree">Continue</button><button style="width:100%;margin-top:.5rem" data-a="out">Sign out</button></div>`}
+function resetScreen(){return `<div class="login"><div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div><h1 style="margin-top:1rem">Reset password</h1>${lg.err?`<p role="alert" style="color:var(--bad)">${lg.err}</p>`:''}<p class="mu">The live system emails you a reset link. This demo lets you set a new password directly.</p><label for="em">University email</label><input id="em" type="email" value="${esc(lg.email||'')}"><label for="pw">New password</label><input id="pw" type="password"><button class="pri" style="margin-top:1rem;width:100%" data-a="rpw">Update password</button><button style="margin-top:.5rem;width:100%" data-a="back">Back</button></div>`}
+function inboxView(){const m=S.notif.filter(x=>x.to===me()).sort((a,b)=>b.t-a.t);m.forEach(x=>x.r=1);return `<h1>Notifications</h1><div class="sec">${m.length?m.map(x=>`<div class="card"><div class="mu">${fDT(x.t)}</div>${esc(x.x)}</div>`).join(''):'<div class="empty">Nothing yet.</div>'}</div>`}
+function auditView(){return `<h1>Activity log</h1><p class="mu">Who did what and when. It never records reasons or notes.</p><div class="sec" style="overflow-x:auto"><table><tr><th>When</th><th>Who</th><th>Action</th></tr>${S.audit.slice(-80).reverse().map(x=>`<tr><td>${fDT(x.t)}</td><td>${esc(x.who)}</td><td>${esc(x.a)}</td></tr>`).join('')}</table></div>`}
 function remText(){const p=S.pref,c=[p.sms&&'SMS',p.push&&'push notification',p.email&&'email'].filter(Boolean);return c.length?'We’ll remind you '+(p.lead==2?'2 hours before':'the day before')+' by '+c.join(', ')+'.':'Reminders are off. Turn them on in settings.'}
 const save=()=>{try{localStorage.setItem('mcc-v1',JSON.stringify(S))}catch(e){}};
 const st=id=>S.staff.find(s=>s.id==id);
@@ -112,6 +124,7 @@ const cls=sid=>st(sid).svc;
 function toast(t){msg=t;render();setTimeout(()=>{msg='';render()},2600)}
 
 function login(){
+if(lg.step==='reset')return resetScreen();
 const R={student:['Student','students'],staff:['Staff','staff'],admin:['Administrator','admin']};
 const brand=`<div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div>`;
 if(lg.step==='role')return `<div class="login">${brand}<h1 style="margin-top:1.4rem">See who’s free and book before you walk over.</h1><p class="mu">Who are you signing in as?</p><div class="who">${Object.keys(R).map(k=>`<button data-a="role" data-r="${k}" style="border-left:5px solid ${k==='student'?'var(--med)':k==='staff'?'var(--co)':'var(--ink)'}"><b>${R[k][0]}</b><br><span class="mu">${k==='student'?'Like A12345@students.ucu.ac.ug':'Use your @'+R[k][1]+'.ucu.ac.ug email'}</span></button>`).join('')}</div></div>`;
@@ -121,7 +134,7 @@ ${lg.err?`<p role="alert" style="color:var(--bad);font-weight:500">${lg.err}</p>
 ${n?`<label for="nm">Full name</label><input id="nm" autocomplete="name">${sf?`<label for="pg">Professional role</label><input id="pg" placeholder="e.g. Nurse or Counselor"><label for="sv">Service</label><select id="sv"><option value="m">Medical</option><option value="c">Counseling</option></select>`:`<label for="pg">Programme</label><input id="pg" placeholder="e.g. BSc Computer Science">`}`:''}
 <label for="em">University email</label><input id="em" type="email" value="${esc(lg.email||'')}" placeholder="${r==='student'?'A12345':'name'}@${R[r][1]}.ucu.ac.ug" autocomplete="username">
 <label for="pw">Password</label><input id="pw" type="password" autocomplete="${n?'new-password':'current-password'}">
-<button class="pri" style="margin-top:1rem;width:100%" data-a="signin">${sf?'Request account':n?'Create account':'Sign in'}</button>
+<button class="pri" style="margin-top:1rem;width:100%" data-a="signin">${sf?'Request account':n?'Create account':'Sign in'}</button>${n?'':'<p style="text-align:center"><button data-a="forgot" style="border:0;background:none;text-decoration:underline">Forgot password?</button></p>'}
 ${r!=='admin'?`<p style="text-align:center"><button data-a="mode" style="border:0;background:none;text-decoration:underline">${n?'I already have an account':r==='staff'?'New staff? Request an account':'New student? Create an account'}</button></p>`:''}${r==='staff'&&!n?'<p class="mu">Demo: namara.winnie@staff.ucu.ac.ug, password campus123.</p>':''}${r==='admin'?'<p class="mu">Demo: admin@admin.ucu.ac.ug, password campus123.</p>':''}${sf?'<p class="mu">An administrator must approve your request before you can sign in.</p>':''}</div>`}
 function loginOld(){return `<div class="login"><div class="brand" style="color:var(--ink)"><i></i>MyCampusCare</div>
 <h1 style="margin-top:1.4rem">See who’s free and book before you walk over.</h1>
@@ -136,12 +149,13 @@ function dayStrip(sel,a){return `<div class="days">${DAYS.map(d=>`<button class=
 
 function appCard(a){const s=st(a.sid);const past=a.st!=='booked'||a.date<TODAY;
 return `<div class="card ${s.svc} ${a.st==='cancelled'?'x':''}"><div class="row sp"><b>${fD(a.date)} at ${fT(a.time)}</b><span class="tag ${a.st==='completed'?'ok':a.st==='cancelled'||a.st==='noshow'?'no':''}">${a.st==='booked'?'Confirmed':a.st==='completed'?'Attended':a.st==='noshow'?'Missed':'Cancelled'}</span></div>
-<div>${esc(s.name)}</div><div class="mu">${s.svc==='m'?'Medical':'Counseling'}${a.fu?', follow-up':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}
-${past?'':`<div class="mu" style="margin-top:.3rem">${remText()}</div><div class="row" style="margin-top:.6rem"><button data-a="re" data-id="${a.id}">Reschedule</button><button class="bad" data-a="cx" data-id="${a.id}">Cancel</button></div>`}</div>`}
+<div>${esc(s.name)}</div>${a.st==='booked'&&a.date===TODAY?queueLine(a):''}<div class="mu">${s.svc==='m'?'Medical':'Counseling'}${a.fu?', follow-up':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}
+${a.st==='completed'?(a.fb?`<div class="mu">You rated this visit ${a.fb} of 5. Thank you.</div>`:`<div class="mu" style="margin-top:.4rem">How was it? Ratings are shown only as an average.</div><div class="row">${[1,2,3,4,5].map(n=>`<button data-a="fb" data-id="${a.id}" data-v="${n}" style="min-width:44px">${n}</button>`).join('')}</div>`):''}${past?'':`<div class="mu" style="margin-top:.3rem">${remText()}</div><div class="row" style="margin-top:.6rem"><button data-a="re" data-id="${a.id}">Reschedule</button><button class="bad" data-a="cx" data-id="${a.id}">Cancel</button></div>`}</div>`}
 
 function home(){const m=mine(),up=m.filter(a=>live(a)&&a.date>=TODAY);
 return `<h1>Hello, ${esc(S.user.name.split(' ')[0])}</h1><p class="mu">${S.user.prog?esc(S.user.prog):'Student'}</p><button class="bad" data-a="tab" data-t="help" style="width:100%;margin-top:.8rem">Need urgent help? See emergency contacts</button>
 <div class="sec"><h2>Your next visit</h2>${up.length?appCard(up[0]):`<div class="empty"><p style="margin:0 0 .6rem">You have nothing booked.</p><button class="pri" data-a="tab" data-t="book">Book an appointment</button></div>`}</div>
+<div class="sec"><h2>Health tip</h2><div class="card"><p style="margin:0">${TIPS[Math.floor(Date.now()/864e5)%TIPS.length]}</p><p class="mu" style="margin:.3rem 0 0">General tips, not medical advice.</p></div></div>
 <div class="sec"><h2>Earliest openings</h2>${S.staff.map(s=>`<div class="card ${s.svc}"><b>${esc(s.name)}</b><div class="mu">${s.role}</div><div>${nextFree(s.id)}</div></div>`).join('')}</div>`}
 
 function book(){const pros=S.staff.filter(s=>s.svc===bk.svc);
@@ -149,7 +163,7 @@ return `<h1>${bk.re?'Reschedule':'Book an appointment'}</h1>
 <div class="sec"><h2>What do you need?</h2><div class="svc"><button class="m ${bk.svc==='m'?'on':''}" data-a="svc" data-v="m"><b>Medical</b><span class="mu">Doctor or nurse</span></button><button class="c ${bk.svc==='c'?'on':''}" data-a="svc" data-v="c"><b>Counseling</b><span class="mu">Private one-to-one</span></button></div>
 ${bk.svc==='c'?'<p class="mu">Counseling sessions are visible only to you and your counselor.</p>':''}</div>
 ${bk.svc?`<div class="sec"><h2>Choose who to see</h2>${pros.map(s=>`<button class="pro ${s.svc} ${bk.sid==s.id?'on':''}" data-a="pro" data-id="${s.id}"><b>${esc(s.name)}</b><br><span class="mu">${s.role}. Earliest: ${nextFree(s.id)}</span></button>`).join('')}</div>`:''}
-${bk.sid?`<div class="sec"><h2>Pick a time</h2>${calendar(bk.date)}${agenda(bk.date)}<div class="slots">${TIMES.map(t=>{const l=left(bk.sid,bk.date,t);return `<button class="${bk.time==t?'on':''} ${l<0?'off':''}" ${l<=0?'disabled':''} data-a="time" data-t="${t}">${fT(t)}${isPast(bk.date,t)?'<br><small>passed</small>':l<0?'<br><small>away</small>':l==0?'<br><small>full</small>':''}</button>`}).join('')}</div></div>`:''}
+${bk.sid?`<div class="sec"><h2>Pick a time</h2>${calendar(bk.date)}${agenda(bk.date)}<div class="slots">${TIMES.map(t=>{const l=left(bk.sid,bk.date,t);return `<button class="${bk.time==t?'on':''} ${l<0?'off':''}" ${l<0||isPast(bk.date,t)?'disabled':''} data-a="${l==0?'wait':'time'}" data-t="${t}">${fT(t)}${isPast(bk.date,t)?'<br><small>passed</small>':l<0?'<br><small>away</small>':l==0?'<br><small>notify me</small>':''}</button>`}).join('')}</div></div>`:''}
 ${bk.time?`<div class="sec card ${cls(bk.sid)}"><b>${esc(st(bk.sid).name)}</b><div>${fD(bk.date)} at ${fT(bk.time)}</div><label for="rsn">Reason for visit</label><select id="rsn">${REASONS[cls(bk.sid)].map(r=>`<option${r===bk.reason?' selected':''}>${r}</option>`).join('')}</select><p class="mu">Only you and ${esc(st(bk.sid).name)} will see this.</p><button class="pri" style="margin-top:.7rem;width:100%" data-a="confirm">${bk.re?'Confirm new time':'Confirm booking'}</button></div>`:''}`}
 
 function appts(){const m=mine();const u=m.filter(a=>live(a)&&a.date>=TODAY),h=m.filter(a=>!(live(a)&&a.date>=TODAY));
@@ -158,10 +172,10 @@ return `<h1>My appointments</h1><div class="sec">${calendar(cal.sel)}${agenda(ca
 function staffToday(){const id=S.user.id,s=st(id),d=S.user.d||DAYS[0];
 const list=S.apps.filter(a=>a.sid==id&&a.date==d&&a.st!=='cancelled').sort((x,y)=>x.time.localeCompare(y.time));
 return `<h1>${s.svc==='m'?'Clinic':'Counseling'} schedule</h1><p class="mu">${esc(s.name)}</p><div class="sec">${dayStrip(d,'sday')}</div>
-<div class="sec">${list.length?list.map(a=>`<div class="card ${s.svc}"><div class="row sp"><b>${fT(a.time)}</b><span class="tag ${a.st==='completed'?'ok':a.st==='noshow'?'no':''}">${a.st==='completed'?'Done':a.st==='noshow'?'Missed':'Waiting'}</span></div><div>${esc(a.who)}${a.fu?' (follow-up)':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}${a.st==='booked'?`<label for="nt${a.id}">Private note, visible only to you</label><textarea id="nt${a.id}" rows="2"></textarea><div class="row" style="margin-top:.6rem"><button data-a="done" data-id="${a.id}">Mark complete</button><button data-a="donefu" data-id="${a.id}">Complete and book follow-up</button><button data-a="noshow" data-id="${a.id}">No-show</button></div>`:(a.note?`<p class="mu" style="margin:.4rem 0 0">Note: ${esc(a.note)}</p>`:'')}</div>`).join(''):'<div class="empty">No one is booked for this day.</div>'}</div>`}
+<div class="sec">${list.length?list.map(a=>`<div class="card ${s.svc}"><div class="row sp"><b>${fT(a.time)}</b><span class="tag ${a.st==='completed'?'ok':a.st==='noshow'?'no':''}">${a.st==='completed'?'Done':a.st==='noshow'?'Missed':'Waiting'}</span></div><div>${esc(a.who)}${a.fu?' (follow-up)':''}</div>${a.reason?`<div class="mu">Reason: ${esc(a.reason)}</div>`:''}${a.st==='booked'?`<label for="nt${a.id}">Private note, visible only to you</label><textarea id="nt${a.id}" rows="2"></textarea><div class="row" style="margin-top:.6rem">${a.q==='seeing'?'':`<button data-a="q" data-id="${a.id}">${a.q==='arrived'?'Start seeing':'Mark arrived'}</button>`}<button data-a="refer" data-id="${a.id}">Suggest ${s.svc==='m'?'counseling':'a medical visit'}</button><button data-a="done" data-id="${a.id}">Mark complete</button><button data-a="donefu" data-id="${a.id}">Complete and book follow-up</button><button data-a="noshow" data-id="${a.id}">No-show</button></div>`:(a.note?`<p class="mu" style="margin:.4rem 0 0">Note: ${esc(a.note)}</p>`:'')}</div>`).join(''):'<div class="empty">No one is booked for this day.</div>'}</div>`}
 
 function staffAvail(){const id=S.user.id,d=S.user.d||DAYS[0];
-return `<h1>My availability</h1><p class="mu">Tap a time to mark yourself away. Students stop seeing it straight away.</p><div class="sec">${dayStrip(d,'sday')}</div>
+return `<h1>My availability</h1><p class="mu">Tap a time to mark yourself away. Students stop seeing it straight away.</p><div class="row" style="margin-top:.6rem"><button class="bad" data-a="dayoff">Mark whole day away</button><button data-a="dayon">Clear day</button></div><div class="sec">${dayStrip(d,'sday')}</div>
 <div class="slots">${TIMES.map(t=>{const off=(S.off[id+d]||[]).includes(t);const n=S.apps.filter(a=>live(a)&&a.sid==id&&a.date==d&&a.time==t).length;return `<button class="${off?'off':'on'}" ${n?'disabled':''} data-a="away" data-t="${t}">${fT(t)}<br><small>${n?n+' booked':off?'away':'open'}</small></button>`}).join('')}</div>`}
 
 function adminHome(){const c=k=>S.apps.filter(a=>a.st===k).length;
@@ -187,7 +201,7 @@ const bars=rows=>{const mx=Math.max(1,...rows.map(r=>r[1]));return rows.map(r=>`
 const med=act.filter(a=>cls(a.sid)==='m').length;
 const csv='date,time,service,professional,status\n'+A.map(a=>[a.date,a.time,cls(a.sid)==='m'?'Medical':'Counseling','"'+st(a.sid).name+'"',a.st].join(',')).join('\n');
 return `<h1>Reports</h1><p class="mu">Totals only. Student names, reasons and notes are never included.</p>
-<div class="sec stats"><div><b>${att+ms?Math.round(ms/(att+ms)*100):0}%</b><span class="mu">no-show rate</span></div><div><b>${act.length}</b><span class="mu">appointments</span></div></div>
+<div class="sec stats"><div><b>${att+ms?Math.round(ms/(att+ms)*100):0}%</b><span class="mu">no-show rate</span></div><div><b>${S.fb.length?(S.fb.reduce((n,x)=>n+x.v,0)/S.fb.length).toFixed(1):'-'}</b><span class="mu">average rating (${S.fb.length})</span></div><div><b>${act.length}</b><span class="mu">appointments</span></div></div>
 <div class="sec"><h2>Medical and counseling</h2>${bars([['Medical',med],['Counseling',act.length-med]])}</div>
 <div class="sec"><h2>Busiest hours</h2>${bars(TIMES.map(t=>[fT(t),act.filter(a=>a.time===t).length]))}</div>
 <div class="sec"><h2>Busiest days</h2>${bars(DAYS.map(d=>[fD(d),act.filter(a=>a.date===d).length]))}</div>
@@ -206,14 +220,14 @@ ${r==='staff'?`<div class="sec"><h2>Notifications</h2>${tg('nb','New bookings an
 function tick(){const e=$('#clk');if(e)e.textContent=new Date().toLocaleString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'numeric',minute:'2-digit',hour12:true})}
 function render(){
 let h;
-if(!S.user)h=login();else{const r=S.user.role;
-const tabs=r==='student'?[['home','Home'],['book','Book'],['mine','Appointments'],['help','Help']]:r==='staff'?[['today','Schedule'],['avail','Availability']]:[['ov','Overview'],['rep','Reports'],['sf','Staff'+(S.pend.length?' ('+S.pend.length+')':'')]];
-if(!tabs.find(t=>t[0]===S.tab)&&S.tab!=='set')S.tab=tabs[0][0];
-const v={home,book,mine:appts,today:staffToday,avail:staffAvail,ov:adminHome,sf:adminStaff,rep:reportsView,help:helpView,set:settings}[S.tab]();
-h=`<div class="top"><div class="brand"><i></i>MyCampusCare</div><div class="r"><button class="gear" data-a="gear" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button><button data-a="out">Sign out</button></div></div><div class="clk" id="clk"></div><div class="body"><main>${v}</main><nav>${tabs.map(t=>`<button class="${S.tab==t[0]?'on':''}${t[0]==='help'?' hp':''}" data-a="tab" data-t="${t[0]}">${t[1]}</button>`).join('')}</nav></div>`}
+if(!S.user)h=login();else if(S.user.role==='student'&&S.acc[S.user.email]&&!S.acc[S.user.email].consent)h=consent();else{const r=S.user.role,unread=S.notif.filter(x=>x.to===me()&&!x.r).length;
+const tabs=r==='student'?[['home','Home'],['book','Book'],['mine','Appointments'],['help','Help']]:r==='staff'?[['today','Schedule'],['avail','Availability']]:[['ov','Overview'],['rep','Reports'],['sf','Staff'+(S.pend.length?' ('+S.pend.length+')':'')],['au','Activity']];
+if(!tabs.find(t=>t[0]===S.tab)&&S.tab!=='set'&&S.tab!=='inbox')S.tab=tabs[0][0];
+const v={home,book,mine:appts,today:staffToday,avail:staffAvail,ov:adminHome,sf:adminStaff,rep:reportsView,au:auditView,inbox:inboxView,help:helpView,set:settings}[S.tab]();
+h=`<div class="top"><div class="brand"><i></i>MyCampusCare</div><div class="r"><button data-a="inbox">Inbox${unread?' ('+unread+')':''}</button><button class="gear" data-a="gear" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button><button data-a="out">Sign out</button></div></div><div class="clk" id="clk"></div><div class="body"><main>${v}</main><nav>${tabs.map(t=>`<button class="${S.tab==t[0]?'on':''}${t[0]==='help'?' hp':''}" data-a="tab" data-t="${t[0]}">${t[1]}</button>`).join('')}</nav></div>`}
 const y=scrollY;$('#app').innerHTML=h+(msg?`<div class="toast" role="status">${msg}</div>`:'');tick();scrollTo(0,y)}
 
-document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const d=b.dataset,a=d.a,id=+d.id;
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const d=b.dataset,a=d.a,id=+d.id;if(LOGGED[a])log(LOGGED[a]);
 if(a==='role'){lg={step:'cred',role:d.r,mode:'in',err:'',email:''}}
 else if(a==='back'){lg={step:'role'}}
 else if(a==='mode'){lg.email=$('#em').value;lg.mode=lg.mode==='new'?'in':'new';lg.err=''}
@@ -228,7 +242,7 @@ const ac=S.acc[em];
 if(!ac||ac.role!==lg.role)return bad(lg.role==='student'?'No student account with this email. Create one first.':'No '+lg.role+' account with this email. An administrator creates these.');
 if(ac.h!==hs(pw))return bad('Wrong password. Try again.');
 S.user=lg.role==='student'?{role:'student',email:em,name:ac.name,prog:ac.prog}:lg.role==='staff'?{role:'staff',email:em,id:ac.sid,d:DAYS[0]}:{role:'admin',email:em};
-S.tab=lg.role==='student'?'home':lg.role==='staff'?'today':'ov';lg={step:'role'}}
+S.tab=lg.role==='student'?'home':lg.role==='staff'?'today':'ov';lg={step:'role'};log('Signed in')}
 else if(a==='stu'){const n=$('#nm').value.trim();if(!n){$('#nm').focus();return}S.user={role:'student',name:n,prog:$('#pg').value.trim()};S.tab='home'}
 else if(a==='staff'){S.user={role:'staff',id,d:DAYS[0]};S.tab='today'}
 else if(a==='admin'){S.user={role:'admin'};S.tab='ov'}
@@ -239,10 +253,10 @@ else if(a==='pro'){bk.sid=id;bk.time=null}
 else if(a==='day'){bk.date=d.d;bk.time=null}
 else if(a==='time')bk.time=d.t;
 else if(a==='sday')S.user.d=d.d;
-else if(a==='confirm'){if(bk.re){const o=S.apps.find(x=>x.id==bk.re);if(o)o.st='cancelled'}
-S.apps.push({id:S.nid++,sid:bk.sid,date:bk.date,time:bk.time,who:S.user.name,st:'booked',reason:($('#rsn')||{}).value||''});
+else if(a==='confirm'){if(bk.re){const o=S.apps.find(x=>x.id==bk.re);if(o){o.st='cancelled';freed(o)}}
+S.apps.push({id:S.nid++,sid:bk.sid,date:bk.date,time:bk.time,who:S.user.name,st:'booked',reason:($('#rsn')||{}).value||''});tell(S.user.name,'Booked with '+st(bk.sid).name+' on '+fD(bk.date)+' at '+fT(bk.time)+'. '+remText());tell(st(bk.sid).name,S.user.name+' booked '+fD(bk.date)+' at '+fT(bk.time)+'.');
 const w=st(bk.sid).name;bk={svc:null,sid:null,date:DAYS[0],time:null,re:null};S.tab='mine';save();toast('Booked with '+esc(w)+'. A reminder will follow.');return}
-else if(a==='cx'){S.apps.find(x=>x.id==id).st='cancelled';save();toast('Appointment cancelled. The slot is open again.');return}
+else if(a==='cx'){const o=S.apps.find(x=>x.id==id);o.st='cancelled';freed(o);tell(st(o.sid).name,o.who+' cancelled '+fD(o.date)+' at '+fT(o.time)+'.');save();toast('Appointment cancelled. The slot is open again.');return}
 else if(a==='re'){const o=S.apps.find(x=>x.id==id);bk={svc:st(o.sid).svc,sid:o.sid,date:o.date,time:null,re:id,reason:o.reason};S.tab='book'}
 else if(a==='done'||a==='donefu'){const o=S.apps.find(x=>x.id==id);o.st='completed';const nt=$('#nt'+id);if(nt&&nt.value.trim())o.note=nt.value.trim();let m='Marked complete.';
 if(a==='donefu'){const i=DAYS.indexOf(o.date),nd=DAYS[i+1];
@@ -250,6 +264,16 @@ if(nd&&left(o.sid,nd,o.time)>0){S.apps.push({id:S.nid++,sid:o.sid,date:nd,time:o
 save();toast(m);return}
 else if(a==='away'){const k=S.user.id+S.user.d;const l=S.off[k]=S.off[k]||[];const i=l.indexOf(d.t);i<0?l.push(d.t):l.splice(i,1)}
 else if(a==='cap'){const s=st(id);s.cap=Math.max(1,Math.min(5,s.cap+ +d.v))}
+else if(a==='agree'){if(!$('#cs').checked){toast('Tick the box to continue.');return}S.acc[S.user.email].consent=Date.now();save();render();return}
+else if(a==='forgot'){lg.email=$('#em').value;lg.step='reset';lg.err=''}
+else if(a==='rpw'){const em=$('#em').value.trim().toLowerCase(),pw=$('#pw').value;lg.email=em;if(!S.acc[em]||pw.length<6){lg.err='No account with that email, or the password is under 6 characters.';render();return}S.acc[em].h=hs(pw);lg={step:'cred',role:S.acc[em].role,mode:'in',err:'',ok:'Password updated. Sign in with it now.',email:em}}
+else if(a==='wait'){if(!S.wait.some(w=>w.sid==bk.sid&&w.date==bk.date&&w.time==d.t&&w.who===S.user.name))S.wait.push({sid:bk.sid,date:bk.date,time:d.t,who:S.user.name});save();toast('You are on the waitlist. We will tell you if it opens.');return}
+else if(a==='inbox')S.tab='inbox';
+else if(a==='q'){const o=S.apps.find(x=>x.id==id);o.q=o.q==='arrived'?'seeing':'arrived';save();toast(o.q==='arrived'?o.who+' checked in.':'Now seeing '+o.who+'.');return}
+else if(a==='refer'){const o=S.apps.find(x=>x.id==id),sv=st(o.sid).svc;tell(o.who,st(o.sid).name+' suggests you also book '+(sv==='m'?'a counseling session':'a medical visit')+'. Tap Book to choose a time.');save();toast('Suggestion sent to '+o.who+'.');return}
+else if(a==='fb'){const o=S.apps.find(x=>x.id==id);o.fb=+d.v;S.fb.push({sid:o.sid,v:+d.v});save();toast('Thanks for your rating.');return}
+else if(a==='dayoff'){const sid=S.user.id,dd=S.user.d,hit=S.apps.filter(x=>x.sid==sid&&x.date==dd&&live(x));hit.forEach(x=>{x.st='cancelled';tell(x.who,st(sid).name+' is away on '+fD(dd)+'. Your '+fT(x.time)+' appointment was cancelled, please rebook.')});S.off[sid+dd]=TIMES.slice();save();toast(hit.length?hit.length+' student(s) told to rebook.':'Day marked away.');return}
+else if(a==='dayon')S.off[S.user.id+S.user.d]=[];
 else if(a==='appr'){const p=S.pend[id];S.staff.push({id:S.nid++,name:p.name,svc:p.svc,role:p.role,cap:1});S.acc[p.email]={role:'staff',sid:S.nid-1,name:p.name,h:p.h};S.pend.splice(id,1);save();toast(esc(p.name)+' approved. They can sign in now.');return}
 else if(a==='decl'){const p=S.pend.splice(id,1)[0];S.rej.push(p.email);save();toast('Request declined.');return}
 else if(a==='cday'){if(S.tab==='book'){if(DAYS.includes(d.d)){bk.date=d.d;bk.time=null}else{toast('That day isn’t open for booking. Pick a weekday in the next two weeks.');return}}else cal.sel=d.d}
