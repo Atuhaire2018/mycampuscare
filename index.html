@@ -34,7 +34,7 @@ nav{display:flex;position:sticky;bottom:0;background:var(--sf);border-top:1px so
 nav button{flex:1;border:0;border-radius:0;background:none;color:var(--mu);font-weight:500;border-top:3px solid transparent}
 nav button.on{color:var(--ink);border-top-color:var(--med);font-weight:600}
 main{padding:1.2rem 1.1rem 2rem;max-width:760px;width:100%;margin:0 auto}
-@media(min-width:820px){.body{flex-direction:row}nav{order:0;flex-direction:column;width:200px;position:static;border-top:0;border-right:1px solid var(--ln);padding:1rem .6rem;gap:.2rem}nav button{text-align:left;border-top:0;border-left:3px solid transparent;border-radius:6px}nav button.on{border-left-color:var(--med);background:var(--bg)}}
+@media(min-width:820px){nav{justify-content:center}nav button{flex:0 1 200px}}
 .sec{margin-top:1.6rem}.sec>h2{margin-bottom:.6rem}
 .row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}.sp{justify-content:space-between}
 .svc{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
