@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF 8">
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> Campus Care Clinic </title>
-<link rel="stylesheet" href="home.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="home.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
 <link https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/fontawesome.min.css">
 </head>
 <body>
 <section id="nav-bar">
 <nav class="navbar sm:navbar-expand bg-1 fg-2">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">img src="C:\Users\Admin\OneDrive\Pictures\Me\shared image.jpg"</a>
-    <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<a class="navbar-brand" href="#">
+  <img src="images/logo.jpg" alt="Campus Care logo" height="40">
+</a>
+        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <i class="fa-solid fa-bars"></i>
     </button>
     <dialog class="drawer drawer-end" tabindex="-1" id="navbarNav" aria-labelledby="navbarNavLabel">
@@ -22,7 +26,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
       </div>
       <div class="drawer-body">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">HOME</a>
           </li>
@@ -41,30 +45,55 @@
   </div>
 </nav>
 </section>
+
+<section id="banner">
+<div class="container">
+<div class="row">
+<div class="col-md-6">
 <header>
        <h1>MY CAMPUS CARE</h1>
   <h3> Students Management Appointment System</h3>
 <p>Your university clinic appointment and counselling portal </p>
 </header>
-<aside>
-<nav>
-<div class="d-flex align-items-start">
-<div class="nav nav-pills nav-pills-vertical me-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <button class="nav-link active" id="v-pills-student-tab" data-bs-toggle="tab" data-bs-target="#v-pills-student" type="button" role="tab" aria-controls="v-pills-student" aria-selected="true"><a href="studentlogin.html">student</a></button>
-  <button class="nav-link" id="v-pills-staff-tab" data-bs-toggle="tab" data-bs-target="#v-pills-staff" type="button" role="tab" aria-controls="v-pills-staff" aria-selected="false"><a href="stafflogin_1.html">staff</a></button>
-  <button class="nav-link" id="v-pills-admin-tab" data-bs-toggle="tab" data-bs-target="#v-pills-admin" type="button" role="tab" aria-controls="v-pills-admin" aria-selected="false"><a href="adminstrationlogin.html">adminstration</a></button>
+<div class="col-md-6 text-left">
+<img src="C:\Users\Admin\OneDrive\Desktop\staff\images\istockphoto-2187393082-612x612.jpg" class="img-fluid" text-center>
 </div>
 </div>
-</nav> 
-</aside>
-    <p> </p> 
+</div>
+</div>
+</section>
+    <p> </p>
+<section id="services">
+<div class="container">
+<div class="row">
+<div class="col-md-4 services">
+<img src="C:\Users\Admin\OneDrive\Desktop\staff\images\shared image.jpg" class="services-img">
+<h3>Our Services</h3>
+<p>MyCampusCare lets students browse medical and counseling services, check staff availability, and book, reschedule or cancel appointments from their phone or computer, with automatic reminders. It also gives health workers and administrators tools to manage schedules and appointments, so students avoid long queues and wasted trips.</p>
+</div>
+<div class="col-md-4 aboutus">
+<img src="C:\Users\Admin\OneDrive\Desktop\staff\images\about.jpg">
+<h3>About Us</h3>
+<p>MyCampusCare is a campus app that lets students book medical and counseling appointments online and see staff availability before they go.
+It cuts queues and wasted trips, and helps staff manage schedules while keeping student health information private.</p>
+</div>
+<div class="col-md-4 contacts">
+<img src="C:\Users\Admin\OneDrive\Desktop\staff\images\contacts.png">
+<h3>Contacts</h3>
+<p>None at the moment.</p>
+</div>
+</div>
+</div>
+</section>
 <img src="C:\Users\USER\Pictures\Camera Roll\WhatsApp Image 2026-10-27 at 11.45.54.jpeg"
 alt="Your physical and mental health matters"
 width="300"
 height="200">
 <section id="About">
-<h2> About our Service</h2>
+<article>
+<h2> Our Goals</h2>
 <p>  Our goal is to improve appointment organization and help reduce congestion at the university clinic</p>
+</article>
 </section>
 <footer>&copy; mycampuscare 2026</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
