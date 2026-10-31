@@ -1,10 +1,5 @@
-body {
-background-image: C:\Users\USER\Pictures\Camera Roll\WhatsApp Image 2026-10-27 at 11.45.54.jpeg;
-background-repeat: no-repeat;
-background-position: center;
-background-color: #EAF6F5;
-text-align: center;
-font-family: "Times New Roman";
+body { 
+ font-family: "Times New Roman";
 }
 header {
 font-size: 18px;
@@ -16,3 +11,7 @@ text-align: center;
   top: 0;
   z-index: 10;
 }
+.navbar {
+  background-image: linear-gradient(to right, #a517ba, #5f1782);
+  padding: 0 !important;
+} 
