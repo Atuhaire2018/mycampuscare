@@ -1,10 +1,11 @@
 body { 
  font-family: "Times New Roman";
+background-color: #87CEEB;
 }
 header {
 font-size: 18px;
 font-family: "Times New Roman";
-text-align: center; 
+color: black;
 }
 #nav-bar {
   position: sticky;
@@ -25,12 +26,46 @@ padding: 0 10px;
 .navbar-nav li a {
  color: #fff !important;
  font-weight: 600;
+ float: right;
+ text-align: left;
+}
+.fa-bars {
+color: #fff;
+font-size: 30px !important;
+}
+.navbar-toggeler {
+outline: none !important;
+}
+#banner {
+background-image: linear-gradient(to right, #e8f5e9, #c8e6c9);
+color: #fff;
+padding-top: 5%;
+}
+.img-fluid {
+width: 300px;
+margin-top:20px;
+}
+#services {
+padding: 80px 0;
+}
+.services-img
+{
+width: 80px;
+margin-top:20px;
+}
+article {
+text-align: center;
+}
+footer {
+text-align: center;
+color: white;
+background-color: #000080;
 }
 
 
 
 
-
+ 
 
 
 
