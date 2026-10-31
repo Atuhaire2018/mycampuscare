@@ -11,3 +11,8 @@ font-size: 18px;
 font-family: "Times New Roman";
 text-align: center; 
 }
+#nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
