@@ -1,6 +1,70 @@
+```css
+/* GENERAL PAGE STYLING */
+
 body {
-background-color: #2457A6;
-color: white;
-text-align: center;
-font-size: 25px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F4F6FA;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
+
+/* MAIN SECTION */
+
+main {
+    background-color: white;
+    margin: 80px auto;
+    padding: 40px;
+    width: 60%;
+    border-radius: 12px;
+    border-top: 6px solid #8B1538;
+}
+
+/* MAIN HEADING */
+
+h2 {
+    color: #173B6C;
+    font-size: 28px;
+}
+
+/* PARAGRAPH */
+
+p {
+    color: #555555;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+/* BUTTONS */
+
+button {
+    background-color: #173B6C;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    margin: 8px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* BUTTON HOVER */
+
+button:hover {
+    background-color: #8B1538;
+}
+
+/* OVERVIEW LINK */
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER ACCENT / PINK */
+
+button:nth-of-type(3) {
+    border-bottom: 3px solid #B84A78;
+}
+```
