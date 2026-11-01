@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Register</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+<link rel="stylesheet" href="register.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
+<link https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/fontawesome.min.css">
+</head>
+<body>
+<header><h2>New to our webpage, please start by creating an account</h1></header>
+<hr>
+<section id="login">
+<form>
+<div class="mb-3">
+    <label for="exampleInputName1" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+    <div id="nameHelp" class="form-text"></div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We’ll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-field">
+    <input type="checkbox" id="exampleCheck1" class="check">
+    <label for="exampleCheck1">Check me out</label>
+  </div>
+</form>
+<div class="form-field">
+  <label for="fieldSelect" class="form-label">Continent</label>
+  <select class="form-control" id="fieldSelect">
+    <option selected>Choose one…</option>
+    <option value="1">Africa</option>
+    <option value="2">Europe</option>
+    <option value="3">Asia</option>
+    <option value="4">North America</option>
+    <option value="5">South America</option>
+  </select>
+<div class="form-field">
+  <label class="form-label">Terms and conditions</label>
+  <input type="checkbox" id="fieldOverheadCheck" class="check" required />
+  <div class="form-field-content">
+    <label for="fieldOverheadCheck">I agree to the terms</label>
+    <small class="form-text"><em><a href="terms_condition.html">Please read before agreeing.</a></em></small>
+  </div>
+</div>
+<button class="btn-solid theme-primary align-self-start" type="submit">Submit</button>
+</div>
+</section>
+</body>
+</html>
