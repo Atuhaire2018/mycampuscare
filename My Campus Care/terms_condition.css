@@ -1,10 +1,16 @@
 body {
 font-family: "Times New Roman";
 background-color: #C0C0C0;
-border: 10px
+border: 10px;
+margin: 20px;
 }
 header {
 text-align: center;
 background: blue;
+color: white;
+}
+footer {
+text-align: center;
+background-color: #1C1C1C;
 color: white;
 }
