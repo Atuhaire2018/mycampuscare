@@ -1,0 +1,80 @@
+header{
+        display:flex;
+        justify-content: space-between;
+        align-items: flex-start;
+       background-color:teal;
+       padding: 20px;
+}
+header h1,
+header h2 {
+          color: white;
+          font-size: 30px;
+          margin-top: 10px;
+          margin-bottom: 20px;
+          margin-left:5px;
+          margin-right:5px;
+         
+}
+header p{
+         color:white;
+         font-size:18px;
+         margin-top:5px;
+} 
+
+
+nav a{
+      color:white;
+      text-decoration:none;
+      
+}
+nav a:hover{
+            color:lightgreen;
+ }
+nav ul {
+   display: flex;
+    list-style: none;
+    padding:0;
+    margin:0;
+    gap:20px;
+    
+}
+.top-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+
+.appointment-btn{
+    display: inline-block;
+    margin-top: 20px
+    background-color:white;
+     color:teal;
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:8px;
+}
+.appointment-btn:hover {
+   background-color:teal;
+    color:white;
+  
+@media screen and(max-width:600px)
+header h1{
+        font-size:24px;
+}
+  header p{
+         font-size:14px;
+}
+  nav ul{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
+}
+
+
+
