@@ -1,5 +1,4 @@
-
-        body {
+body {
             font-family: Arial, sans-serif;
             min-height:100vh;
             display:flex;
@@ -91,4 +90,3 @@
                 margin: 5px;
             }
         }
-   
