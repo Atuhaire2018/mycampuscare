@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCampusCare - Staff Dashboard</title>
+<link rel="stylesheet" href="staff_homepage.css">
+   </head>
+
+
+<body>
+    <header>
+        <h1>MyCampusCare</h1>
+        <p>Staff Dashboard | Student Health and Counselling Services</p>
+        <a href="index.html" class="home-button">
+            Return to Main Homepage
+        </a>
+    </header>
+
+    <nav>
+        <a href="appointments.html">Appointments</a>
+        <a href="availability.html">My Availability</a>
+        <a href="students.html">Students' Records</a>
+    </nav>
+
+    <section class="welcome-section">
+        <h2 id="welcomeMessage">
+            Welcome to MyCampusCare Staff Dashboard!
+        </h2>
+        <p>
+            We are glad to have you here.
+            Manage your appointments, update your availability,
+            access students' records and monitor healthcare
+            activities through your dashboard.
+        </p>
+        <p>
+            Thank you for being part of our mission to provide
+            quality healthcare and counselling services to students.
+        </p>
+    </section>
+
+
+    <section class="dashboard">
+        <h2>Staff Dashboard</h2>
+        <div class="dashboard-cards">
+            <!-- APPOINTMENTS -->
+            <div class="card">
+                <h3>Appointments</h3>
+                <p>
+                    View and manage student hospital
+                    and counselling appointments.
+                </p>
+                <a href="appointments.html">
+                    View Appointments
+                </a>
+            </div>
+          
+            <div class="card">
+                <h3>My Availability</h3>
+                <p>
+                    View and update your working days,
+                    available hours and schedules.
+                </p>
+                <a href="availability.html">
+                    View My Schedule
+                </a>
+            </div>
+
+   
+            <div class="card">
+                <h3>Students' Records</h3>
+                <p>
+                    Access and manage student
+                    registration and patient records.
+                </p>
+                <a href="students.html">
+                    View Students' Records
+                </a>
+            </div>
+
+
+       </div>
+    </section>
+
+    <footer>
+        <p>
+            © 2026 MyCampusCare |
+            Staff Dashboard |
+            Student Health and Counselling Services
+        </p>
+    </footer>
+
+   <script>
+        // Display the name of the logged-in staff member
+        let staffName = localStorage.getItem("staffName");
+        if (staffName) {
+            document.getElementById("welcomeMessage").innerHTML =
+            "Welcome, " + staffName + "!";
+        }
+    </script>
+</body>
+</html>
