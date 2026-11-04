@@ -1,41 +1,36 @@
-```css
-/* GENERAL PAGE STYLING */
-
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #F4F6FA;
+    background-color:#173B6C;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-
-/* MAIN SECTION */
-
+h1 {
+    background-color: #B84A78;
+    color: white;
+    font-size: 40px;
+    padding: 25px;
+    margin: 0;
+}
 main {
-    background-color: white;
+    background-color:white;
     margin: 80px auto;
     padding: 40px;
     width: 60%;
-    border-radius: 12px;
-    border-top: 6px solid #8B1538;
+    border-radius: 50px;
+    border-top: 20px solid #D4AF37;
 }
-
-/* MAIN HEADING */
 
 h2 {
-    color: #173B6C;
-    font-size: 28px;
+    color: #B84A78;
+    font-size: 35px;
 }
 
-/* PARAGRAPH */
-
 p {
-    color: #555555;
+    color:#B84A78;
     font-size: 15px;
     margin-bottom: 30px;
 }
-
-/* BUTTONS */
 
 button {
     background-color: #173B6C;
@@ -49,22 +44,13 @@ button {
     cursor: pointer;
 }
 
-/* BUTTON HOVER */
-
 button:hover {
-    background-color: #8B1538;
+    background-color:#8B1538;
 }
-
-/* OVERVIEW LINK */
 
 button a {
     color: white;
     text-decoration: none;
 }
 
-/* FOOTER ACCENT / PINK */
-
-button:nth-of-type(3) {
-    border-bottom: 3px solid #B84A78;
-}
 ```
