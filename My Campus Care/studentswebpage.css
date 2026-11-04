@@ -1,0 +1,159 @@
+
+:root {
+  --green-dark: #0b4f43;
+  --green: #11806a;
+  --green-light: #dcefe9;
+  --page: #f2f8f6;
+  --text: #17332d;
+  --muted: #4a645d;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #dcefe9;
+}
+
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 32px;
+  background: var(--green-dark);
+}
+
+.brand {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav a {
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav a:hover,
+.nav a:focus-visible {
+  background: var(--green);
+}
+
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  main p{
+  text-align: justify;
+  hyphens: auto;
+
+}
+
+.hero {
+  padding: 56px 0 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: 2.2rem;
+  color: var(--green-dark);
+}
+
+.hero p {
+  max-width: 60ch;
+  margin: 0 auto 24px;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 6px;
+  background: var(--green);
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+}
+
+
+.services {
+  padding-bottom: 56px;
+}
+
+.services h2 {
+  margin-bottom: 20px;
+  color: var(--green-dark);
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.service {
+  padding: 24px;
+  border-left: 5px solid var(--green);
+  border-radius: 6px;
+  background: var(--white);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.service h3 {
+  margin: 0 0 8px;
+  color: var(--green-dark);
+}
+
+.service p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: 20px;
+  background: var(--green);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  .site-header {
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+
+}
