@@ -29,11 +29,9 @@
   <nav class="menu-bar" aria-label="Staff menu">
     <div class="container">
       <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="staff-home.html"><i class="fa-solid fa-house"></i>Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="staff-appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
-        <li class="nav-item"><a class="nav-link active" href="staff-availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
-        <li class="nav-item"><a class="nav-link" href="staff-records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
-        <li class="nav-item"><a class="nav-link" href="staff-reports.html"><i class="fa-solid fa-chart-simple"></i>Reports</a></li>
+        <li class="nav-item"><a class="nav-link" href="appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
+        <li class="nav-item"><a class="nav-link" href="records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
       </ul>
     </div>
   </nav>
@@ -213,7 +211,6 @@
       setTimeout(function () { t.remove(); }, 2500);
     }
 
-    // Grey out a day's row when "Working" is switched off
     document.querySelectorAll('.day-toggle').forEach(function (t) {
       function sync() {
         var row = t.closest('tr');
@@ -227,7 +224,6 @@
     });
 
     document.getElementById('saveBtn').addEventListener('click', function () {
-      // TODO: send the schedule to your backend here
       showToast('Schedule saved');
     });
     document.getElementById('resetBtn').addEventListener('click', function () {
