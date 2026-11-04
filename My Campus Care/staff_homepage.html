@@ -43,7 +43,6 @@
     <section class="dashboard">
         <h2>Staff Dashboard</h2>
         <div class="dashboard-cards">
-            <!-- APPOINTMENTS -->
             <div class="card">
                 <h3>Appointments</h3>
                 <p>
@@ -73,7 +72,7 @@
                     Access and manage student
                     registration and patient records.
                 </p>
-                <a href="students.html">
+                <a href="records.html">
                     View Students' Records
                 </a>
             </div>
@@ -84,14 +83,13 @@
 
     <footer>
         <p>
-            © 2026 MyCampusCare |
+            &copy;2026 MyCampusCare |
             Staff Dashboard |
             Student Health and Counselling Services
         </p>
     </footer>
 
    <script>
-        // Display the name of the logged-in staff member
         let staffName = localStorage.getItem("staffName");
         if (staffName) {
             document.getElementById("welcomeMessage").innerHTML =
