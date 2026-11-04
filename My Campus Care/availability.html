@@ -3,285 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Our Staff | MyCampusCare</title>
+  <title>MyCampusCare - My Availability</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link href="staff.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="dashboard.css" rel="stylesheet">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg mcc-nav">
+  <header class="top-header">
     <div class="container">
-      <a class="navbar-brand" href="home.html">
-        <i class="fa-solid fa-notes-medical me-2"></i>MyCampusCare
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="staff.html">Staff</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item ms-lg-3"><a class="btn btn-gold" href="register.html">Register</a></li>
-        </ul>
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <a class="brand" href="staff-home.html">
+          <i class="fa-solid fa-hand-holding-medical brand-icon"></i>
+          <span class="brand-text">
+            <strong>MyCampusCare</strong>
+            <span>Student Health and Counselling Services</span>
+          </span>
+        </a>
+        <a href="home.html" class="btn btn-return"><i class="fa-solid fa-house me-2"></i>Return to Main Homepage</a>
       </div>
-    </div>
-  </nav>
-
-  <header class="page-head">
-    <div class="container">
-      <div class="row align-items-end g-4">
-        <div class="col-lg-7">
-          <h1>Meet the people who look after you on campus</h1>
-          <p class="lead mb-0">Check who is on duty, what they specialise in, and which days they see students, before you leave your hostel or lecture room.</p>
-        </div>
-        <div class="col-lg-5">
-          <div class="on-duty">
-            <div class="on-duty-count" id="onDutyCount">4</div>
-            <div>
-              <div class="fw-semibold">staff on duty today</div>
-              <div class="small text-muted">Updated by the health centre each morning</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h1 class="page-title">Staff Dashboard</h1>
     </div>
   </header>
 
-  <section class="filter-bar">
+  <nav class="menu-bar" aria-label="Staff menu">
     <div class="container">
-      <div class="row g-2 align-items-center">
-        <div class="col-md-5">
-          <div class="input-group">
-            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="search" id="searchBox" class="form-control" placeholder="Search by name or specialisation" aria-label="Search staff">
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <select id="deptFilter" class="form-select" aria-label="Filter by department">
-            <option value="all">All departments</option>
-            <option value="medical">Medical</option>
-            <option value="counseling">Counseling</option>
-          </select>
-        </div>
-        <div class="col-6 col-md-4">
-          <div class="form-check form-switch ms-md-2">
-            <input class="form-check-input" type="checkbox" role="switch" id="todayOnly">
-            <label class="form-check-label" for="todayOnly">Only show staff on duty today</label>
-          </div>
-        </div>
-      </div>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="staff-home.html"><i class="fa-solid fa-house"></i>Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="staff-appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="staff-availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
+        <li class="nav-item"><a class="nav-link" href="staff-records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
+        <li class="nav-item"><a class="nav-link" href="staff-reports.html"><i class="fa-solid fa-chart-simple"></i>Reports</a></li>
+      </ul>
     </div>
-  </section>
+  </nav>
 
-  <main class="container staff-main">
+  <main class="container pb-4">
+    <h2 class="section-title">My Availability</h2>
+
     <div class="row g-4">
-
       <div class="col-lg-8">
-        <div id="staffList">
-
-          <article class="staff-row medical" data-dept="medical" data-today="yes">
-            <div class="avatar">SN</div>
-            <div class="staff-info">
-              <h2 class="staff-name">Dr. Sarah Namutebi</h2>
-              <p class="staff-role">General physician, Health Centre</p>
-              <p class="staff-spec">Malaria and fever, infections, general check-ups, referrals</p>
-              <ul class="days" aria-label="Days available">
-                <li class="on" title="Monday">M</li>
-                <li class="on" title="Tuesday">T</li>
-                <li class="on" title="Wednesday">W</li>
-                <li title="Thursday">T</li>
-                <li class="on" title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-on"><i class="fa-solid fa-circle"></i> On duty</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>8:00 am to 4:00 pm</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book appointment</a>
-            </div>
-          </article>
-
-          <article class="staff-row medical" data-dept="medical" data-today="yes">
-            <div class="avatar">JO</div>
-            <div class="staff-info">
-              <h2 class="staff-name">Dr. Joseph Okello</h2>
-              <p class="staff-role">Medical officer, Health Centre</p>
-              <p class="staff-spec">Minor injuries, sports injuries, skin conditions, prescriptions</p>
-              <ul class="days" aria-label="Days available">
-                <li class="on" title="Monday">M</li>
-                <li title="Tuesday">T</li>
-                <li class="on" title="Wednesday">W</li>
-                <li class="on" title="Thursday">T</li>
-                <li class="on" title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-on"><i class="fa-solid fa-circle"></i> On duty</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>9:00 am to 5:00 pm</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book appointment</a>
-            </div>
-          </article>
-
-          <article class="staff-row medical" data-dept="medical" data-today="no">
-            <div class="avatar">GA</div>
-            <div class="staff-info">
-              <h2 class="staff-name">Grace Akello</h2>
-              <p class="staff-role">Registered nurse, Health Centre</p>
-              <p class="staff-spec">Vaccinations, wound dressing, blood pressure checks, first aid</p>
-              <ul class="days" aria-label="Days available">
-                <li class="on" title="Monday">M</li>
-                <li class="on" title="Tuesday">T</li>
-                <li title="Wednesday">W</li>
-                <li class="on" title="Thursday">T</li>
-                <li title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-off"><i class="fa-solid fa-circle"></i> Off today</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>Next: Thursday, 8:00 am</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book appointment</a>
-            </div>
-          </article>
-
-          <article class="staff-row counseling" data-dept="counseling" data-today="yes">
-            <div class="avatar">EN</div>
-            <div class="staff-info">
-              <h2 class="staff-name">Esther Nakato</h2>
-              <p class="staff-role">Senior counselor, Counseling Centre</p>
-              <p class="staff-spec">Stress and anxiety, relationships, academic pressure, grief</p>
-              <ul class="days" aria-label="Days available">
-                <li class="on" title="Monday">M</li>
-                <li class="on" title="Tuesday">T</li>
-                <li class="on" title="Wednesday">W</li>
-                <li class="on" title="Thursday">T</li>
-                <li title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-on"><i class="fa-solid fa-circle"></i> On duty</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>10:00 am to 5:00 pm</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book session</a>
-            </div>
-          </article>
-
-          <article class="staff-row counseling" data-dept="counseling" data-today="yes">
-            <div class="avatar">DM</div>
-            <div class="staff-info">
-              <h2 class="staff-name">David Mugisha</h2>
-              <p class="staff-role">Counselor, Counseling Centre</p>
-              <p class="staff-spec">Career guidance, adjustment to university life, substance use support</p>
-              <ul class="days" aria-label="Days available">
-                <li title="Monday">M</li>
-                <li class="on" title="Tuesday">T</li>
-                <li class="on" title="Wednesday">W</li>
-                <li class="on" title="Thursday">T</li>
-                <li class="on" title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-on"><i class="fa-solid fa-circle"></i> On duty</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>9:00 am to 3:00 pm</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book session</a>
-            </div>
-          </article>
-
-          <article class="staff-row counseling" data-dept="counseling" data-today="no">
-            <div class="avatar">RA</div>
-            <div class="staff-info">
-              <h2 class="staff-name">Ruth Atim</h2>
-              <p class="staff-role">Clinical psychologist, Counseling Centre</p>
-              <p class="staff-spec">Depression, trauma, sleep difficulties, referrals for ongoing care</p>
-              <ul class="days" aria-label="Days available">
-                <li class="on" title="Monday">M</li>
-                <li title="Tuesday">T</li>
-                <li title="Wednesday">W</li>
-                <li class="on" title="Thursday">T</li>
-                <li class="on" title="Friday">F</li>
-              </ul>
-            </div>
-            <div class="staff-side">
-              <span class="status status-off"><i class="fa-solid fa-circle"></i> Off today</span>
-              <div class="hours"><i class="fa-regular fa-clock me-1"></i>Next: Thursday, 10:00 am</div>
-              <a href="book.html" class="btn btn-teal btn-sm">Book session</a>
-            </div>
-          </article>
-
-        </div>
-
-        <div id="emptyMsg" class="empty-msg d-none">
-          <p class="mb-1 fw-semibold">No staff match your search.</p>
-          <p class="mb-0 text-muted">Clear the search box or change the filters above.</p>
+        <div class="panel">
+          <h2>Weekly working hours</h2>
+          <p class="hint">Students only see the days and times you switch on here. Changes apply to new bookings only.</p>
+          <div class="table-wrap">
+            <table class="table mcc-table">
+              <thead>
+                <tr><th>Day</th><th>Working</th><th>Start</th><th>End</th><th>Slot length</th><th>Students per slot</th></tr>
+              </thead>
+              <tbody>
+            <tr>
+              <td class="day-name">Monday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Monday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Monday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Monday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Monday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Monday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Tuesday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Tuesday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Tuesday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Tuesday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Tuesday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Tuesday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Wednesday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Wednesday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Wednesday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Wednesday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Wednesday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Wednesday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Thursday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Thursday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Thursday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Thursday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Thursday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Thursday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Friday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Friday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Friday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Friday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Friday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Friday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Saturday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Saturday"></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Saturday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Saturday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Saturday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Saturday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Sunday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Sunday"></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Sunday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Sunday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Sunday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Sunday students per slot"></td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-green" id="resetBtn" type="button">Reset</button>
+            <button class="btn btn-green" id="saveBtn" type="button"><i class="fa-solid fa-floppy-disk me-2"></i>Save schedule</button>
+          </div>
         </div>
       </div>
 
-      <aside class="col-lg-4">
-        <div class="side-panel">
-          <h3>Opening hours</h3>
-          <dl class="hours-list">
-            <dt>Health Centre</dt>
-            <dd>Mon to Fri, 8:00 am to 5:00 pm</dd>
-            <dt>Counseling Centre</dt>
-            <dd>Mon to Fri, 9:00 am to 5:00 pm</dd>
-            <dt>Weekends</dt>
-            <dd>Emergencies only</dd>
-          </dl>
+      <div class="col-lg-4">
+        <div class="panel">
+          <h2>Mark time off</h2>
+          <p class="hint">Block dates when you are on leave, in a meeting or away from campus.</p>
+          <form id="timeOffForm">
+            <div class="mb-3">
+              <label for="offFrom" class="form-label">From</label>
+              <input type="date" id="offFrom" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="offTo" class="form-label">To</label>
+              <input type="date" id="offTo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="offReason" class="form-label">Reason (shown to admin only)</label>
+              <input type="text" id="offReason" class="form-control" placeholder="Leave, training, meeting">
+            </div>
+            <button type="submit" class="btn btn-green w-100">Block these dates</button>
+          </form>
         </div>
 
-        <div class="side-panel urgent">
-          <h3><i class="fa-solid fa-triangle-exclamation me-2"></i>Need help right now?</h3>
-          <p class="mb-2">Appointments are not for emergencies. If you or someone else is in danger, go to the Health Centre straight away or call campus security.</p>
-          <p class="mb-0 small">Emergency contact: 0700 000 000</p>
+        <div class="panel">
+          <h2>Upcoming time off</h2>
+          <ul class="list-unstyled mb-0" id="offList">
+            <li class="text-muted small">Nothing blocked yet.</li>
+          </ul>
         </div>
-
-        <div class="side-panel">
-          <h3>How booking works</h3>
-          <p class="mb-0">Pick a staff member, choose a free time slot, and you will get a confirmation and a reminder before your visit. Everything you share with counselors stays confidential.</p>
-        </div>
-      </aside>
-
+      </div>
     </div>
+
   </main>
 
-  <footer class="mcc-footer">
-    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
-      <span>&copy; 2026 MyCampusCare. Student Medical and Counseling Appointment System.</span>
-      <span>Your health information is private and only seen by authorised staff.</span>
-    </div>
+  <footer class="site-footer">
+    &copy; 2026 MyCampusCare | Staff Dashboard | Student Health and Counselling Services
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const rows = document.querySelectorAll('.staff-row');
-    const searchBox = document.getElementById('searchBox');
-    const deptFilter = document.getElementById('deptFilter');
-    const todayOnly = document.getElementById('todayOnly');
-    const emptyMsg = document.getElementById('emptyMsg');
-
-    function applyFilters() {
-      const text = searchBox.value.trim().toLowerCase();
-      let shown = 0;
-
-      rows.forEach(function (row) {
-        const matchText = row.textContent.toLowerCase().includes(text);
-        const matchDept = deptFilter.value === 'all' || row.dataset.dept === deptFilter.value;
-        const matchToday = !todayOnly.checked || row.dataset.today === 'yes';
-        const visible = matchText && matchDept && matchToday;
-        row.classList.toggle('d-none', !visible);
-        if (visible) shown++;
-      });
-
-      emptyMsg.classList.toggle('d-none', shown !== 0);
+    function showToast(msg) {
+      var t = document.createElement('div');
+      t.className = 'toast-ok';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(function () { t.remove(); }, 2500);
     }
 
-    searchBox.addEventListener('input', applyFilters);
-    deptFilter.addEventListener('change', applyFilters);
-    todayOnly.addEventListener('change', applyFilters);
+    // Grey out a day's row when "Working" is switched off
+    document.querySelectorAll('.day-toggle').forEach(function (t) {
+      function sync() {
+        var row = t.closest('tr');
+        row.classList.toggle('day-off', !t.checked);
+        row.querySelectorAll('input[type=time], select, input[type=number]').forEach(function (el) {
+          el.disabled = !t.checked;
+        });
+      }
+      t.addEventListener('change', sync);
+      sync();
+    });
 
-    document.getElementById('onDutyCount').textContent =
-      document.querySelectorAll('.staff-row[data-today="yes"]').length;
+    document.getElementById('saveBtn').addEventListener('click', function () {
+      // TODO: send the schedule to your backend here
+      showToast('Schedule saved');
+    });
+    document.getElementById('resetBtn').addEventListener('click', function () {
+      location.reload();
+    });
+
+    document.getElementById('timeOffForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var from = document.getElementById('offFrom').value;
+      var to = document.getElementById('offTo').value;
+      var why = document.getElementById('offReason').value.trim() || 'Time off';
+      if (to < from) { showToast('End date is before start date'); return; }
+      var list = document.getElementById('offList');
+      if (list.querySelector('.text-muted')) list.innerHTML = '';
+      var li = document.createElement('li');
+      li.className = 'd-flex justify-content-between align-items-center border-bottom py-2';
+      li.innerHTML = '<span><strong></strong><br><small class="text-muted"></small></span>' +
+        '<button type="button" class="btn btn-sm btn-outline-green" aria-label="Remove"><i class="fa-solid fa-xmark"></i></button>';
+      li.querySelector('strong').textContent = from + ' to ' + to;
+      li.querySelector('small').textContent = why;
+      li.querySelector('button').addEventListener('click', function () { li.remove(); });
+      list.appendChild(li);
+      this.reset();
+      showToast('Dates blocked');
+    });
+
   </script>
 </body>
 </html>
