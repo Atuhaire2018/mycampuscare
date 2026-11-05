@@ -17,7 +17,7 @@ body {
         }
 
         header {
-            background-color: teal;
+            background-color: var(--bs-teal-400);
             color: white;
             text-align: center;
             padding: 20px;
@@ -68,8 +68,8 @@ body {
         }
 
         footer {
-            background-color: var(--bs-teal-800);
-            color: var(--bs-black);
+            background-color: var(--bs-teal-400);
+            color: var(--bs-white);
             text-align: center;
             padding: 25px 15px;
             margin:20px auto 0;
