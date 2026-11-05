@@ -1,7 +1,10 @@
 :root,
 :host {
 --bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
-
+--bs-teal-800: color-mix(in oklch, var(--bs-black) 48%, oklch(68% 0.22 190deg));
+--bs-cyan-300: color-mix(in oklch, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+--bs-white: #fff;
+ --bs-black: #000;
 }
 body {
             font-family: Arial, sans-serif;
@@ -14,20 +17,20 @@ body {
         }
 
         header {
-            background-color: var(--bs-teal-400);
+            background-color: teal;
             color: white;
             text-align: center;
             padding: 20px;
         }
 
         nav {
-            background-color: var(--bs-teal-400);
+            background-color: var(--bs-cyan-300);
             padding: 12px;
             text-align: center;
         }
 
         nav a {
-            color: white;
+            color: var(--bs-white);
             text-decoration: none;
             margin: 10px;
         }
@@ -47,7 +50,7 @@ body {
         }
 
         .card {
-            background-color: white;
+            background-color: var(--bs-white);
             padding: 20px;
             width: 300px;
             border-radius: 10px;
@@ -65,8 +68,8 @@ body {
         }
 
         footer {
-            background-color:teal;
-            color: white;
+            background-color: var(--bs-teal-800);
+            color: var(--bs-black);
             text-align: center;
             padding: 25px 15px;
             margin:20px auto 0;
