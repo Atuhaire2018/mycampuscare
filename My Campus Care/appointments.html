@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyCampusCare - Appointments</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="dashboard.css" rel="stylesheet">
+</head>
+<body>
+
+  <header class="top-header">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <a class="brand" href="staff-home.html">
+          <i class="fa-solid fa-hand-holding-medical brand-icon"></i>
+          <span class="brand-text">
+            <strong>MyCampusCare</strong>
+            <span>Student Health and Counselling Services</span>
+          </span>
+        </a>
+        <a href="home.html" class="btn btn-return"><i class="fa-solid fa-house me-2"></i>Return to Main Homepage</a>
+      </div>
+      <h1 class="page-title">Staff Dashboard</h1>
+    </div>
+  </header>
+
+  <nav class="menu-bar" aria-label="Staff menu">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link active" href="appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
+        <li class="nav-item"><a class="nav-link" href="availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
+        <li class="nav-item"><a class="nav-link" href="records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container pb-4">
+    <h2 class="section-title">Appointments</h2>
+
+    <div class="row g-3 mb-3">
+      <div class="col-6 col-md-3"><div class="stat"><i class="fa-regular fa-calendar-check"></i><div><div class="num">5</div><div class="lbl">Booked for today</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="stat"><i class="fa-regular fa-hourglass-half"></i><div><div class="num" id="cPending">2</div><div class="lbl">Pending</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="stat"><i class="fa-solid fa-circle-check"></i><div><div class="num" id="cDone">1</div><div class="lbl">Completed</div></div></div></div>
+      <div class="col-6 col-md-3"><div class="stat"><i class="fa-solid fa-ban"></i><div><div class="num" id="cCancelled">1</div><div class="lbl">Cancelled</div></div></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+          <h2 class="mb-0">Student appointments</h2>
+          <p class="hint mb-0">Complete or cancel bookings. Students are notified when a status changes.</p>
+        </div>
+        <div class="filter-tabs d-flex flex-wrap gap-2" role="group" aria-label="Filter by status">
+          <button class="btn active" data-filter="all" type="button">All</button>
+          <button class="btn" data-filter="pending" type="button">Pending</button>
+          <button class="btn" data-filter="confirmed" type="button">Confirmed</button>
+          <button class="btn" data-filter="done" type="button">Completed</button>
+          <button class="btn" data-filter="cancelled" type="button">Cancelled</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="table mcc-table">
+          <thead>
+            <tr><th>Time</th><th>Student</th><th>Service and reason</th><th>Status</th><th>Action</th></tr>
+          </thead>
+          <tbody id="apptBody">
+            <tr data-status="pending">
+              <td>08:30<br><small class="text-muted">10 Nov 2026</small></td>
+              <td><strong>Mary Nakabugo</strong><br><small class="text-muted">2201/ST/0415</small></td>
+              <td><span class="type-tag type-medical">Medical</span><br><small>Fever and headache</small></td>
+              <td><span class="pill pill-pending">Pending</span></td>
+              <td class="text-nowrap"><button type="button" class="btn btn-sm btn-green act-done">Mark completed</button> <button type="button" class="btn btn-sm btn-outline-green act-cancel">Cancel</button></td>
+            </tr>
+            <tr data-status="confirmed">
+              <td>09:00<br><small class="text-muted">10 Nov 2026</small></td>
+              <td><strong>Brian Ssemakula</strong><br><small class="text-muted">2301/ST/0127</small></td>
+              <td><span class="type-tag type-medical">Medical</span><br><small>Sports injury check</small></td>
+              <td><span class="pill pill-confirmed">Confirmed</span></td>
+              <td class="text-nowrap"><button type="button" class="btn btn-sm btn-green act-done">Mark completed</button> <button type="button" class="btn btn-sm btn-outline-green act-cancel">Cancel</button></td>
+            </tr>
+            <tr data-status="confirmed">
+              <td>10:30<br><small class="text-muted">10 Nov 2026</small></td>
+              <td><strong>Joan Achieng</strong><br><small class="text-muted">2101/ST/0988</small></td>
+              <td><span class="type-tag type-counseling">Counseling</span><br><small>Exam stress</small></td>
+              <td><span class="pill pill-confirmed">Confirmed</span></td>
+              <td class="text-nowrap"><button type="button" class="btn btn-sm btn-green act-done">Mark completed</button> <button type="button" class="btn btn-sm btn-outline-green act-cancel">Cancel</button></td>
+            </tr>
+            <tr data-status="pending">
+              <td>11:30<br><small class="text-muted">10 Nov 2026</small></td>
+              <td><strong>Peter Kigozi</strong><br><small class="text-muted">2401/ST/0310</small></td>
+              <td><span class="type-tag type-medical">Medical</span><br><small>Vaccination</small></td>
+              <td><span class="pill pill-pending">Pending</span></td>
+              <td class="text-nowrap"><button type="button" class="btn btn-sm btn-green act-done">Mark completed</button> <button type="button" class="btn btn-sm btn-outline-green act-cancel">Cancel</button></td>
+            </tr>
+            <tr data-status="confirmed">
+              <td>14:00<br><small class="text-muted">10 Nov 2026</small></td>
+              <td><strong>Hellen Auma</strong><br><small class="text-muted">2201/ST/0652</small></td>
+              <td><span class="type-tag type-counseling">Counseling</span><br><small>Follow-up session</small></td>
+              <td><span class="pill pill-confirmed">Confirmed</span></td>
+              <td class="text-nowrap"><button type="button" class="btn btn-sm btn-green act-done">Mark completed</button> <button type="button" class="btn btn-sm btn-outline-green act-cancel">Cancel</button></td>
+            </tr>
+            <tr data-status="done">
+              <td>15:00<br><small class="text-muted">09 Nov 2026</small></td>
+              <td><strong>Samuel Odongo</strong><br><small class="text-muted">2301/ST/0764</small></td>
+              <td><span class="type-tag type-medical">Medical</span><br><small>Blood pressure check</small></td>
+              <td><span class="pill pill-done">Completed</span></td>
+              <td class="text-nowrap"><span class="text-muted small">No actions</span></td>
+            </tr>
+            <tr data-status="cancelled">
+              <td>11:00<br><small class="text-muted">09 Nov 2026</small></td>
+              <td><strong>Diana Namukasa</strong><br><small class="text-muted">2101/ST/0203</small></td>
+              <td><span class="type-tag type-counseling">Counseling</span><br><small>First session</small></td>
+              <td><span class="pill pill-cancelled">Cancelled</span></td>
+              <td class="text-nowrap"><span class="text-muted small">No actions</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2026 MyCampusCare | Staff Dashboard | Student Health and Counselling Services
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showToast(msg) {
+      var t = document.createElement('div');
+      t.className = 'toast-ok';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(function () { t.remove(); }, 2500);
+    }
+
+    var labels = { pending: 'Pending', confirmed: 'Confirmed', done: 'Completed', cancelled: 'Cancelled' };
+    var current = 'all';
+
+    function applyFilter() {
+      document.querySelectorAll('#apptBody tr').forEach(function (r) {
+        r.classList.toggle('d-none', current !== 'all' && r.dataset.status !== current);
+      });
+    }
+
+    function updateCounts() {
+      var c = { pending: 0, done: 0, cancelled: 0 };
+      document.querySelectorAll('#apptBody tr').forEach(function (r) {
+        if (c[r.dataset.status] !== undefined) c[r.dataset.status]++;
+      });
+      document.getElementById('cPending').textContent = c.pending;
+      document.getElementById('cDone').textContent = c.done;
+      document.getElementById('cCancelled').textContent = c.cancelled;
+    }
+
+    function setStatus(row, status) {
+      row.dataset.status = status;
+      var pill = row.querySelector('.pill');
+      pill.className = 'pill pill-' + status;
+      pill.textContent = labels[status];
+      row.lastElementChild.innerHTML = '<span class="text-muted small">No actions</span>';
+      updateCounts();
+      applyFilter();
+    }
+
+    document.getElementById('apptBody').addEventListener('click', function (e) {
+      var row = e.target.closest('tr');
+      if (e.target.classList.contains('act-done')) {
+        setStatus(row, 'done');
+        showToast('Marked as completed');
+      }
+      if (e.target.classList.contains('act-cancel')) {
+        if (confirm('Cancel this appointment? The student will be notified.')) {
+          setStatus(row, 'cancelled');
+          showToast('Appointment cancelled');
+        }
+      }
+    });
+
+    document.querySelectorAll('.filter-tabs .btn').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.filter-tabs .btn').forEach(function (x) { x.classList.remove('active'); });
+        b.classList.add('active');
+        current = b.dataset.filter;
+        applyFilter();
+      });
+    });
+
+  </script>
+</body>
+</html>

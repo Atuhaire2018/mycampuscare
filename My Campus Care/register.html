@@ -1,59 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Register</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+    <title>MyCampusCare - Registration</title>
 <link rel="stylesheet" href="register.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
-<link https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/fontawesome.min.css">
-</head>
+
+    </head>
+
 <body>
-<header><h2>New to our webpage, please start by creating an account</h1></header>
-<hr>
-<section id="login">
-<form>
-<div class="mb-3">
-    <label for="exampleInputName1" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
-    <div id="nameHelp" class="form-text"></div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We’ll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-field">
-    <input type="checkbox" id="exampleCheck1" class="check">
-    <label for="exampleCheck1">Check me out</label>
-  </div>
-</form>
-<div class="form-field">
-  <label for="fieldSelect" class="form-label">Continent</label>
-  <select class="form-control" id="fieldSelect">
-    <option selected>Choose one…</option>
-    <option value="1">Africa</option>
-    <option value="2">Europe</option>
-    <option value="3">Asia</option>
-    <option value="4">North America</option>
-    <option value="5">South America</option>
-  </select>
-<div class="form-field">
-  <label class="form-label">Terms and conditions</label>
-  <input type="checkbox" id="fieldOverheadCheck" class="check" required />
-  <div class="form-field-content">
-    <label for="fieldOverheadCheck">I agree to the terms</label>
-    <small class="form-text"><em><a href="terms_condition.html">Please read before agreeing.</a></em></small>
-  </div>
+
+<div class="page">
+
+
+    <div class="header">
+
+        <h1>MyCampusCare</h1>
+
+        <p>Student Health and Counselling Services</p>
+
+    </div>
+
+
+
+    <div class="container">
+
+
+        <div class="welcome-section">
+
+            <h2>Your Wellbeing Matters!</h2>
+
+            <p>
+                Welcome to MyCampusCare.
+
+                Our platform connects students to the
+                campus hospital and counselling department.
+
+                Register an account to access health services
+                and conveniently manage your appointments.
+            </p>
+
+            <p>
+                <strong>Our Services Include:</strong>
+            </p>
+
+            <p>✓ Hospital appointments</p>
+
+            <p>✓ Counselling appointments</p>
+
+            <p>✓ Access to healthcare information</p>
+
+        </div>
+
+
+        <div class="form-section">
+
+            <h2>Student Registration</h2>
+
+            <p>Please fill in your details below.</p>
+
+
+            <form id="registrationForm">
+
+                <label>Full Names</label>
+
+                <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Enter your full names"
+                    required
+                >
+
+
+                <label>Student ID Number</label>
+
+                <input
+                    type="text"
+                    name="studentid"
+                    placeholder="Enter your student ID"
+                    required
+                >
+
+
+                <label>Personal Email Address</label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    minlength="8"
+                    required
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    maxlength="10"
+                    required
+                >
+
+
+                <label>Gender</label>
+
+                <select name="gender" required>
+
+                    <option value="">Select your gender</option>
+
+                    <option value="Male">Male</option>
+
+                    <option value="Female">Female</option>
+
+                </select>
+
+
+                <button type="submit">
+                   <a href="home.html"> REGISTER </a>
+                </button>
+
+                <div id="message">
+
+                    Registration details submitted successfully!
+                    WELCOME TO MYCAMPUSCARE.
+
+                </div>
+
+            </form>
+
+
+            <div class="login">
+
+                Already have an account?
+
+                <a href="home.html">Login here</a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <footer>
+
+        © 2026 MyCampusCare |
+        Student Health and Counselling Services
+
+    </footer>
+
 </div>
-<button class="btn-solid theme-primary align-self-start" type="submit">Submit</button>
-</div>
-</section>
+ 
+
+<script>
+
+    document.getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        if (!this.checkValidity()) {
+
+            this.reportValidity();
+
+            return;
+
+        }
+
+        document.getElementById("message").style.display = "block";
+
+    });
+
+</script>
+
 </body>
 </html>

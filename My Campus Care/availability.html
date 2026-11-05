@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyCampusCare - My Availability</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <link href="dashboard.css" rel="stylesheet">
+</head>
+<body>
+  <header class="top-header">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <a class="brand" href="staff-home.html">
+          <i class="fa-solid fa-hand-holding-medical brand-icon"></i>
+          <span class="brand-text">
+            <strong>MyCampusCare</strong>
+            <span>Student Health and Counselling Services</span>
+          </span>
+        </a>
+        <a href="home.html" class="btn btn-return"><i class="fa-solid fa-house me-2"></i>Return to Main Homepage</a>
+      </div>
+      <h1 class="page-title">Staff Dashboard</h1>
+    </div>
+  </header>
+
+  <nav class="menu-bar" aria-label="Staff menu">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
+        <li class="nav-item"><a class="nav-link" href="records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container pb-4">
+    <h2 class="section-title">My Availability</h2>
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="panel">
+          <h2>Weekly working hours</h2>
+          <p class="hint">Students only see the days and times you switch on here. Changes apply to new bookings only.</p>
+          <div class="table-wrap">
+            <table class="table mcc-table">
+              <thead>
+                <tr><th>Day</th><th>Working</th><th>Start</th><th>End</th><th>Slot length</th><th>Students per slot</th></tr>
+              </thead>
+              <tbody>
+            <tr>
+              <td class="day-name">Monday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Monday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Monday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Monday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Monday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Monday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Tuesday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Tuesday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Tuesday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Tuesday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Tuesday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Tuesday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Wednesday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Wednesday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Wednesday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Wednesday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Wednesday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Wednesday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Thursday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Thursday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Thursday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Thursday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Thursday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Thursday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Friday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Friday" checked></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Friday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Friday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Friday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Friday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Saturday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Saturday"></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Saturday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Saturday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Saturday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Saturday students per slot"></td>
+            </tr>
+            <tr>
+              <td class="day-name">Sunday</td>
+              <td><div class="form-check form-switch"><input class="form-check-input day-toggle" type="checkbox" role="switch" aria-label="Working on Sunday"></div></td>
+              <td><input type="time" class="form-control form-control-sm" value="08:00" aria-label="Sunday start time"></td>
+              <td><input type="time" class="form-control form-control-sm" value="16:00" aria-label="Sunday end time"></td>
+              <td>
+                <select class="form-select form-select-sm" aria-label="Sunday slot length">
+                  <option>20 minutes</option>
+                  <option selected>30 minutes</option>
+                  <option>45 minutes</option>
+                  <option>60 minutes</option>
+                </select>
+              </td>
+              <td><input type="number" min="1" max="20" class="form-control form-control-sm" value="1" aria-label="Sunday students per slot"></td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-end gap-2 mt-3">
+            <button class="btn btn-outline-green" id="resetBtn" type="button">Reset</button>
+            <button class="btn btn-green" id="saveBtn" type="button"><i class="fa-solid fa-floppy-disk me-2"></i>Save schedule</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="panel">
+          <h2>Mark time off</h2>
+          <p class="hint">Block dates when you are on leave, in a meeting or away from campus.</p>
+          <form id="timeOffForm">
+            <div class="mb-3">
+              <label for="offFrom" class="form-label">From</label>
+              <input type="date" id="offFrom" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="offTo" class="form-label">To</label>
+              <input type="date" id="offTo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="offReason" class="form-label">Reason (shown to admin only)</label>
+              <input type="text" id="offReason" class="form-control" placeholder="Leave, training, meeting">
+            </div>
+            <button type="submit" class="btn btn-green w-100">Block these dates</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2>Upcoming time off</h2>
+          <ul class="list-unstyled mb-0" id="offList">
+            <li class="text-muted small">Nothing blocked yet.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2026 MyCampusCare | Staff Dashboard | Student Health and Counselling Services
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showToast(msg) {
+      var t = document.createElement('div');
+      t.className = 'toast-ok';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(function () { t.remove(); }, 2500);
+    }
+
+    document.querySelectorAll('.day-toggle').forEach(function (t) {
+      function sync() {
+        var row = t.closest('tr');
+        row.classList.toggle('day-off', !t.checked);
+        row.querySelectorAll('input[type=time], select, input[type=number]').forEach(function (el) {
+          el.disabled = !t.checked;
+        });
+      }
+      t.addEventListener('change', sync);
+      sync();
+    });
+
+    document.getElementById('saveBtn').addEventListener('click', function () {
+      showToast('Schedule saved');
+    });
+    document.getElementById('resetBtn').addEventListener('click', function () {
+      location.reload();
+    });
+
+    document.getElementById('timeOffForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var from = document.getElementById('offFrom').value;
+      var to = document.getElementById('offTo').value;
+      var why = document.getElementById('offReason').value.trim() || 'Time off';
+      if (to < from) { showToast('End date is before start date'); return; }
+      var list = document.getElementById('offList');
+      if (list.querySelector('.text-muted')) list.innerHTML = '';
+      var li = document.createElement('li');
+      li.className = 'd-flex justify-content-between align-items-center border-bottom py-2';
+      li.innerHTML = '<span><strong></strong><br><small class="text-muted"></small></span>' +
+        '<button type="button" class="btn btn-sm btn-outline-green" aria-label="Remove"><i class="fa-solid fa-xmark"></i></button>';
+      li.querySelector('strong').textContent = from + ' to ' + to;
+      li.querySelector('small').textContent = why;
+      li.querySelector('button').addEventListener('click', function () { li.remove(); });
+      list.appendChild(li);
+      this.reset();
+      showToast('Dates blocked');
+    });
+
+  </script>
+</body>
+</html>
