@@ -74,7 +74,6 @@ ul {
 footer {
   margin-top: 20px;
   background-color: #b0125b;
-  border-top: 4px solid #111111;
   color: #c0bebe;
   text-align: center;
 }
@@ -84,6 +83,6 @@ footer p {
   margin: 0;
   padding: 18px;
   background: transparent;
-  color: #c0bebe;
-  font-size: 0.9rem;
+  color: #727171;
+  font-size: 1.2rem;
 }
