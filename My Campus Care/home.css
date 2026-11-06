@@ -1,4 +1,3 @@
-
 :root {
   --teal:      #0e6b6b;   
   --teal-dark: #0a4f50;
@@ -6,7 +5,7 @@
   --mist:      #e9f4f2;   
   --sky:       #d4eaf3;   
   --white:     #ffffff;
-  --sun:       #f4b942;   
+  --sun:       #f4b942;    
 }
 
 html { scroll-behavior: smooth; }
