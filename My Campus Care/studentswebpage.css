@@ -1,16 +1,13 @@
 
-:root {
-  --green-dark: #0b4f43;
-  --green: #11806a;
-  --green-light: #dcefe9;
-  --page: #f2f8f6;
-  --text: #17332d;
-  --muted: #4a645d;
-  --white: #ffffff;
+:root
+:host {
+--bs-teal-300: color-mix(in oklch, var(--bs-white) 40%, oklch(68% 0.22 190deg));
+--bs-pink-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.22 4deg));
+--bs-lime-400: color-mix(in oklch, var(--bs-white) 20%, oklch(65% 0.24 135deg));
+--bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray-100: #f8f9fa;
 }
-
-
-  
 
 
 body {
@@ -18,7 +15,7 @@ body {
   font-family: "Segoe UI", Arial, sans-serif;
   line-height: 1.6;
   color: var(--text);
-  background: #dcefe9;
+  background: var(--bs-teal-300);
 }
 
 
@@ -29,14 +26,14 @@ body {
   justify-content: space-between;
   gap: 12px;
   padding: 16px 32px;
-  background: var(--green-dark);
+  background: var(--bs-pink-300);
 }
 
 .brand {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--bs-lime-400);
 }
 
 .nav {
@@ -47,7 +44,7 @@ body {
 .nav a {
   padding: 8px 16px;
   border-radius: 6px;
-  color: var(--white);
+  color: var(--bs-lime-400);
   text-decoration: none;
 }
 
