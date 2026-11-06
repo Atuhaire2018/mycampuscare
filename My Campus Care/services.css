@@ -1,22 +1,31 @@
- body {
+
+root,
+:host {
+--bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
+--bs-teal-800: color-mix(in oklch, var(--bs-black) 48%, oklch(68% 0.22 190deg));
+--bs-cyan-300: color-mix(in oklch, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+--bs-white: #fff;
+ --bs-black: #000;
+}
+body {
     font-family: 'Poppins', sans-serif;
-    background-color: #173B6C;
+    background-color: var(--bs-teal-400);
     margin: 0;
     padding: 0;
     text-align: center;
 }
 h1 {
-    background-color:#B84A78;
-    color: #173B6C;
+    background-color:var(--bs-cyan-300);
+    color: var(--bs-white);
     padding: 20px;
 }
 nav {
-    background-color: #D4AF37;
+    background-color: var(--bs-cyan-300);
     padding: 10px;
 }
 nav button {
-    background-color: #D4AF37;
-    color: #173B6C;
+    background-color: var(--bs-cyan-300);
+    color: var(--bs-white);
     border: none;
     padding: 10px 20px;
     margin: 8px;
@@ -25,38 +34,38 @@ nav button {
     font-size: 14px;
 }
 nav button:hover {
-    background-color: #B84A78;
+    background-color: var(--bs-teal-400);
 }
 nav button a {
-    color: #173B6C;
+    color: var(--bs-white);
     text-decoration: none;
 }
 main {
-    background-color: #173B6C;
+    background-color: var(--bs-teal-400);
     margin: 40px auto;
     padding: 20px;
     width: 80%;
     border-radius: 12px;
 }
 h2 {
-    color: #B84A78;
+    color: var(--bs-white);
 }
 section {
-    background-color:#173B6C ;
+    background-color: var(--bs-teal-400);
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
-    border-top: 4px solid #B84A78;
+    border-top: 4px solid var(--bs-cyan-300);
 }
 h3 {
-    color: #B84A78;
+    color: var(--bs-cyan-300);
 }
 p {
-    color: white;
+    color: var(--bs-white);
     font-size: 14px;
 }
 footer {
-    background-color:#D4AF37;
-    color: white;
+    background-color: var(--bs-cyan-300);
+    color: var(--bs-white);
     padding: 15px;
 }
