@@ -3,6 +3,7 @@
 --bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
 --bs-teal-800: color-mix(in oklch, var(--bs-black) 48%, oklch(68% 0.22 190deg));
 --bs-cyan-300: color-mix(in oklch, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+--bs-aliceblue: #F0F8FF;
 --bs-white: #fff;
  --bs-black: #000;
 }
@@ -11,7 +12,7 @@ body {
             min-height:100vh;
             display:flex;
             flex-direction:column; 
-            background-color: #f0f8ff;
+            background-color: var(--bs-aliceblue);
             margin: 0;
             padding: 0;
         }
