@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff Dashboard | My Campus Care</title>
+
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="staff_homepage.html">My <span>Campus</span> Care</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#staffNav" aria-controls="staffNav"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="staffNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 pt-3 pt-lg-0">
+          <li class="nav-item">
+            <a class="btn btn-sm btn-outline-light w-100" href="appointments.html">
+              <i class="fa-solid fa-calendar-check me-1"></i> Appointments
+            </a>
+          </li>
+          <li class="nav-item mt-2 mt-lg-0">
+            <a class="btn btn-sm btn-outline-light w-100" href="availability.html">
+              <i class="fa-solid fa-clock me-1"></i> My Availability
+            </a>
+          </li>
+          <li class="nav-item mt-2 mt-lg-0">
+            <a class="btn btn-sm btn-outline-light w-100" href="records.html">
+              <i class="fa-solid fa-folder-open me-1"></i> Students' Records
+            </a>
+          </li>
+          <li class="nav-item mt-2 mt-lg-0">
+            <button type="button" id="logoutBtn" class="btn btn-sm btn-warning w-100">
+              <i class="fa-solid fa-right-from-bracket me-1"></i> Log out
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  
+  <header class="page-hero py-5">
+    <div class="container">
+      <h1 class="text-uppercase">Staff Dashboard</h1>
+      <p class="lead">Student Health and Counselling Services</p>
+      <a href="index.html" class="btn btn-warning">
+        <i class="fa-solid fa-house me-1"></i> Return to Main Homepage
+      </a>
+    </div>
+  </header>
+
+  <main class="container py-5 flex-grow-1">
+
+
+    <section class="mb-5">
+      <div class="card content-card shadow-sm">
+        <div class="card-header">Welcome</div>
+        <div class="card-body">
+          <h2 id="welcomeMessage" class="h4 section-title">Welcome to the My Campus Care Staff Dashboard!</h2>
+          <p>
+            We are glad to have you here. Manage your appointments, update your availability,
+            access students' records and monitor healthcare activities through your dashboard.
+          </p>
+          <p>
+            Thank you for being part of our mission to provide quality healthcare and
+            counselling services to students.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="appointments.html" class="btn btn-primary">
+              <i class="fa-solid fa-calendar-check me-1"></i> View Appointments
+            </a>
+            <a href="availability.html" class="btn btn-outline-primary">
+              <i class="fa-solid fa-clock me-1"></i> Update Availability
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section>
+      <h2 class="section-title">Dashboard</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="card user-card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h3><i class="fa-solid fa-calendar-check me-2"></i>Appointments</h3>
+              <p>View and manage student hospital and counselling appointments.</p>
+              <a href="appointments.html" class="btn btn-primary mt-auto">
+                View Appointments
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card user-card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h3><i class="fa-solid fa-clock me-2"></i>My Availability</h3>
+              <p>View and update your working days, available hours and schedules.</p>
+              <a href="availability.html" class="btn btn-secondary mt-auto">
+                View My Schedule
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card user-card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h3><i class="fa-solid fa-folder-open me-2"></i>Students' Records</h3>
+              <p>Access and manage student registration and patient records.</p>
+              <a href="records.html" class="btn btn-primary mt-auto">
+                View Students' Records
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  
+  <footer class="site-footer py-4 mt-auto">
+    <div class="container text-center">
+      <div id="site-footer">&copy; 2026 My Campus Care. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/footer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    
+    var staffName = localStorage.getItem("staffName");
+    if (staffName) {
+      document.getElementById("welcomeMessage").textContent = "Welcome, " + staffName + "!";
+    }
+
+    
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      localStorage.removeItem("staffName");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

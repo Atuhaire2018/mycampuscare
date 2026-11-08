@@ -1,0 +1,145 @@
+
+
+:root {
+  
+  --navy: #0b1f4d;
+  --black: #000000;
+  --grey: #d9d9dc;
+  --pink: #d98ba0;
+  --pink-deep: #b4546e;
+  --mist: #f1f1f3;
+  --white: #ffffff;
+  --sun: #f4b942;
+
+  
+  --bs-primary: var(--navy);        --bs-primary-rgb: 11, 31, 77;
+  --bs-secondary: var(--pink-deep); --bs-secondary-rgb: 180, 84, 110;
+  --bs-info: var(--pink);           --bs-info-rgb: 217, 139, 160;
+  --bs-warning: var(--sun);         --bs-warning-rgb: 244, 185, 66;
+  --bs-light: var(--mist);          --bs-light-rgb: 241, 241, 243;
+  --bs-dark: var(--black);          --bs-dark-rgb: 0, 0, 0;
+
+
+  --bs-body-bg: var(--white);
+  --bs-body-color: var(--navy);
+  --bs-border-color: var(--grey);
+  --bs-link-color: var(--pink-deep);
+  --bs-link-hover-color: var(--navy);
+}
+
+
+.btn-primary {
+  --bs-btn-bg: var(--navy);
+  --bs-btn-border-color: var(--navy);
+  --bs-btn-color: var(--white);
+  --bs-btn-hover-bg: #091840;
+  --bs-btn-hover-border-color: #091840;
+  --bs-btn-hover-color: var(--white);
+  --bs-btn-active-bg: #071433;
+  --bs-btn-active-border-color: #071433;
+  --bs-btn-disabled-bg: var(--navy);
+  --bs-btn-disabled-border-color: var(--navy);
+}
+.btn-secondary {
+  --bs-btn-bg: var(--pink-deep);
+  --bs-btn-border-color: var(--pink-deep);
+  --bs-btn-color: var(--white);
+  --bs-btn-hover-bg: #9a4560;
+  --bs-btn-hover-border-color: #9a4560;
+  --bs-btn-hover-color: var(--white);
+  --bs-btn-active-bg: #863b54;
+  --bs-btn-active-border-color: #863b54;
+}
+.btn-warning {
+  --bs-btn-bg: var(--sun);
+  --bs-btn-border-color: var(--sun);
+  --bs-btn-color: var(--navy);
+  --bs-btn-hover-bg: #f0a91f;
+  --bs-btn-hover-border-color: #f0a91f;
+  --bs-btn-hover-color: var(--navy);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--navy);
+  --bs-btn-border-color: var(--navy);
+  --bs-btn-hover-bg: var(--navy);
+  --bs-btn-hover-border-color: var(--navy);
+  --bs-btn-hover-color: var(--white);
+}
+
+
+body {
+  background-color: var(--mist);
+  color: var(--navy);
+}
+
+.site-navbar {
+  background-color: var(--navy);
+  border-bottom: 4px solid var(--pink-deep);
+}
+.site-navbar .navbar-brand {
+  color: var(--white);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.site-navbar .navbar-brand span {
+  color: var(--pink);
+}
+
+.page-hero {
+  background-color: var(--navy);
+  color: var(--white);
+  border-bottom: 6px solid var(--sun);
+}
+.page-hero h1 {
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+.page-hero .lead {
+  color: var(--grey);
+}
+
+.section-title {
+  color: var(--navy);
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid var(--pink);
+  display: inline-block;
+}
+
+.content-card {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  border-radius: 0.75rem;
+}
+.content-card .card-header {
+  background-color: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+  border-bottom: 3px solid var(--pink-deep);
+}
+
+.user-card {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  border-top: 5px solid var(--pink-deep);
+  border-radius: 0.75rem;
+}
+.user-card h3 {
+  color: var(--pink-deep);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+
+.site-footer {
+  background-color: var(--navy);
+  color: var(--grey);
+  border-top: 4px solid var(--pink-deep);
+}
+.site-footer a {
+  color: var(--pink);
+}
+.site-footer a:hover {
+  color: var(--white);
+}
