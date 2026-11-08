@@ -35,7 +35,7 @@ section { padding: 4rem 0; }
 }
 
 #nav-bar {
-  background: linear-gradient(90deg, var(--grey) 15%, var(--grey) 35%, var(--pink) 120%);
+  background: linear-gradient(90deg, var(--grey) 10%, var(--pink-deep) 40%, var(--navy) 125%);
   padding: 0;
   z-index: 1000;
 }
@@ -65,9 +65,6 @@ section { padding: 4rem 0; }
   padding: .6rem 1rem;
 }
 
-#nav-bar .nav-link:hover,
-#nav-bar .nav-link:focus { color: var(--navy); text-decoration: underline; }
-
 .nav-divider {
   width: 1px;
   height: 38px;
@@ -77,7 +74,7 @@ section { padding: 4rem 0; }
 }
 
 .btn-login {
-  color: var(--navy);
+  color: var(--black);
   background: transparent;
   border: 2px solid var(--navy);
   border-radius: 2rem;
