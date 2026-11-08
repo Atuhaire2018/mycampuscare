@@ -215,8 +215,23 @@ a:hover {
   border-top: 3px solid var(--accent-pink);
 }
 
-.footer p {
+#site-footer {
   margin: 0;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-dark);
+  text-align: center;
+  background-color: var(--bg-white);
 }
+#brave {
+  background-color: var(--accent-pink);
+  color: var(--text-white);
+}
+
+.heading h1,h2,h3 {
+  color: var(--text-white);
+}
+#button{
+     
+  background-color: var(--primary-navy-dark);
+}
+
