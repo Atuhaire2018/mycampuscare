@@ -6,17 +6,17 @@
     text-align: center;
 }
 h1 {
-    background-color:#B84A78;
-    color: #173B6C;
+    background-color:#ae1253;
+    color: #0c0c0c;
     padding: 20px;
 }
 nav {
-    background-color: #D4AF37;
+    background-color: #a21e55;
     padding: 10px;
 }
 nav button {
-    background-color: #D4AF37;
-    color: #173B6C;
+    background-color: #a9a7a8;
+    color: #02207a;
     border: none;
     padding: 10px 20px;
     margin: 8px;
@@ -25,38 +25,39 @@ nav button {
     font-size: 14px;
 }
 nav button:hover {
-    background-color: #B84A78;
+    background-color: #a21e55;
 }
 nav button a {
     color: #173B6C;
     text-decoration: none;
 }
 main {
-    background-color: #173B6C;
+    background-color: #a9a7a8;
     margin: 40px auto;
     padding: 20px;
     width: 80%;
     border-radius: 12px;
 }
 h2 {
-    color: #B84A78;
+    color: #0c0b0b;
 }
 section {
-    background-color:#173B6C ;
+    background-color:#133a71 ;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     border-top: 4px solid #B84A78;
 }
 h3 {
-    color: #B84A78;
+    color: #070606;
 }
 p {
-    color: white;
-    font-size: 14px;
+    color: navy;
+    font-size: 18px;
 }
 footer {
-    background-color:#D4AF37;
+    background-color:rgb(182, 21, 93);
+    font-family: Georgia, "Times New Roman", serif;
     color: white;
     padding: 15px;
 }
