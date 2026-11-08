@@ -15,6 +15,7 @@ body {
             background-color: var(--bs-aliceblue);
             margin: 0;
             padding: 0;
+            font-color: var(--bs-black);
         }
 
         header {
