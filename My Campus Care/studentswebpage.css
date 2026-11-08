@@ -2,12 +2,12 @@
 :root
 :host {
 --bs-teal-300: color-mix(in oklch, var(--bs-white) 40%, oklch(68% 0.22 190deg));
---bs-pink-300: color-mix(in oklch, var(--bs-white) 40%, oklch(60% 0.22 4deg));
+
 --bs-lime-400: color-mix(in oklch, var(--bs-white) 20%, oklch(65% 0.24 135deg));
 --bs-black: #000;
   --bs-white: #fff;
   --bs-gray-100: #f8f9fa; 
-  --bs-orange-300: color-mix(in oklch, var(--bs-white) 40%, oklch(70% 0.22 52deg));
+ 
 }
 
 
@@ -27,7 +27,7 @@ body {
   justify-content: space-between;
   gap: 12px;
   padding: 16px 32px;
-  background: var(--bs-pink-300);
+  background: var(--bs-white);
 }
 
 .brand {
