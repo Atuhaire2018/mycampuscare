@@ -6,7 +6,8 @@
 --bs-lime-400: color-mix(in oklch, var(--bs-white) 20%, oklch(65% 0.24 135deg));
 --bs-black: #000;
   --bs-white: #fff;
-  --bs-gray-100: #f8f9fa;
+  --bs-gray-100: #f8f9fa; 
+  --bs-orange-300: color-mix(in oklch, var(--bs-white) 40%, oklch(70% 0.22 52deg));
 }
 
 
@@ -120,7 +121,7 @@ main {
 
 .service h3 {
   margin: 0 0 8px;
-  color: var(--green-dark);
+  color: var(--bs-orange-300);
 }
 
 .service p {
