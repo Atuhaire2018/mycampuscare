@@ -1,21 +1,17 @@
-:root {
-  --green: #2a5c3d;
-  --green-dark: #1f4630;
-  --green-soft: #e3efe7;
-  --sky: #dff1fa;
-  --line: #c9dce6;
-  --text: #1d2b24;
-  --muted: #5c6b64;
-  --amber: #b97a00;
-  --amber-soft: #fbefd2;
-  --red: #a63a32;
-  --red-soft: #f8dedb;
+:root,
+:host {
+--bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
+--bs-teal-800: color-mix(in oklch, var(--bs-black) 48%, oklch(68% 0.22 190deg));
+--bs-cyan-300: color-mix(in oklch, var(--bs-white) 40%, oklch(69% 0.22 220deg));
+--bs-aliceblue: #F0F8FF;
+--bs-white: #fff;
+ --bs-black: #000;
 }
 
 body {
   font-family: "Merriweather", Georgia, serif;
-  background: var(--sky);
-  color: var(--text);
+  background: var(--bs-aliceblue);
+  color: var(--bs-black);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -24,8 +20,8 @@ body {
 main { flex: 1; }
 
 .top-header {
-  background: var(--green);
-  color: #fff;
+  background: var(--bs-teal-400);
+  color: var(--bs-white);
   padding: 1.1rem 0 0.4rem;
 }
 .brand { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #fff; }
@@ -47,9 +43,9 @@ main { flex: 1; }
   font-weight: 700;
   font-size: 0.95rem;
 }
-.btn-return:hover { background: #fff; color: var(--green); }
+.btn-return:hover { background: var(--bs-teal-800); color: var(--bs-white); }
 
-.menu-bar { background: var(--green-dark); }
+.menu-bar { background: var(--bs-teal-800); }
 .menu-bar .nav { justify-content: space-between; }
 .menu-bar .nav-link {
   color: #fff;
@@ -208,4 +204,12 @@ main { flex: 1; }
   .menu-bar .nav { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; }
   .menu-bar .nav-link { white-space: nowrap; }
   .section-title { font-size: 1.3rem; }
+}
+#site-footer {
+  background-color: var(--bs-teal-400);
+  color: var(--bs-white);
+}
+.btn btn-return {
+  background-color: var(--bs-teal-800) !important;
+  color: var(--bs-white);
 }

@@ -1,33 +1,44 @@
 :root,
 :host {
---bs-teal-400: color-mix(in oklch, var(--bs-white) 20%, oklch(68% 0.22 190deg));
+  --bs-navy: #0a1f5c;
+  --bs-pink: #a3195b;
+  --bs-gray: #5a5f66;
 
+  --bs-navy-light: color-mix(in oklch, var(--bs-navy) 70%, oklch(26% 0.12 265));
+  --bs-pink-light: color-mix(in oklch, var(--bs-pink) 60%, oklch(35% 0.15 350));
+  --bs-gray-light: color-mix(in oklch, var(--bs-gray) 60%, oklch(40% 0.01 250));
+
+  --bs-aliceblue: #F0F8FF;
+  --bs-white: #fff;
+  --bs-black: #000;
 }
 body {
             font-family: Arial, sans-serif;
+            color: black;
             min-height:100vh;
             display:flex;
             flex-direction:column; 
-            background-color: #f0f8ff;
+            background-color: var(--bs-pink-light);
             margin: 0;
             padding: 0;
+            font-color: var(--bs-black);
         }
 
         header {
-            background-color: var(--bs-teal-400);
-            color: white;
+            background-color: var(--bs-navy-light);
+            color: rgb(151, 7, 93);
             text-align: center;
             padding: 20px;
         }
 
         nav {
-            background-color: var(--bs-teal-400);
+            background-color: var(--bs-gray-light);
             padding: 12px;
             text-align: center;
         }
 
         nav a {
-            color: white;
+            color: var(--bs-black);
             text-decoration: none;
             margin: 10px;
         }
@@ -47,28 +58,28 @@ body {
         }
 
         .card {
-            background-color: white;
+            background-color: var(--bs-gray-light);
             padding: 20px;
             width: 300px;
             border-radius: 10px;
-            box-shadow: 0 2px 8px #cccccc;
+            box-shadow: 0 2px 8px #680334;
             text-align: left;
         }
 
         .card h2 {
-            color: #087f8c;
+            color: black;
             text-align: center;
         }
 
         .card a {
-            color: #087f8c;
+            color: #7e0a63;
         }
 
         footer {
-            background-color:teal;
-            color: white;
+            background-color: var(--bs-navy-light);
+            color: var(--bs-pink);
             text-align: center;
-            padding: 25px 15px;
+            padding: 15px 10px;
             margin:20px auto 0;
             width:100%;
             box-sizing:border-box;
