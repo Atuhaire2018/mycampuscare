@@ -15,17 +15,17 @@ body {
     text-align: center;
 }
 h1 {
-    background-color:var(--bs-cyan-300);
-    color: var(--bs-white);
+    background-color:#B84A78;
+    color: #173B6C;
     padding: 20px;
 }
 nav {
-    background-color: var(--bs-cyan-300);
+    background-color: #D4AF37;
     padding: 10px;
 }
 nav button {
-    background-color: var(--bs-cyan-300);
-    color: var(--bs-white);
+    background-color: #D4AF37;
+    color: #173B6C;
     border: none;
     padding: 10px 20px;
     margin: 8px;
@@ -34,38 +34,38 @@ nav button {
     font-size: 14px;
 }
 nav button:hover {
-    background-color: var(--bs-teal-400);
+    background-color: #B84A78;
 }
 nav button a {
     color: var(--bs-white);
     text-decoration: none;
 }
 main {
-    background-color: var(--bs-teal-400);
+    background-color: #173B6C;
     margin: 40px auto;
     padding: 20px;
     width: 80%;
     border-radius: 12px;
 }
 h2 {
-    color: var(--bs-white);
+    color: #B84A78;
 }
 section {
-    background-color: var(--bs-teal-400);
+    background-color:#173B6C ;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     border-top: 4px solid var(--bs-cyan-300);
 }
 h3 {
-    color: var(--bs-cyan-300);
+    color: #B84A78;
 }
 p {
-    color: var(--bs-white);
+    color: white;
     font-size: 14px;
 }
 footer {
-    background-color: var(--bs-cyan-300);
-    color: var(--bs-white);
+    background-color:#D4AF37;
+    color: white;
     padding: 15px;
 }
