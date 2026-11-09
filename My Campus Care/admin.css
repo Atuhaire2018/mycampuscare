@@ -1,43 +1,90 @@
 :root
 :host {--bs-blue-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.24 240deg));
+       --bs-gray-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.02 245deg));
+       --bs-pink-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.22 4deg));
 }
-
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bs-blue-950);
+    background-color:var(--bs-white);
     margin: 0;
     padding: 0;
     text-align: center;
 }
 h1 {
-    background-color: #B84A78;
+    background-color:var(--bs-pink-700);
     color: white;
-    font-size: 40px;
+    font-size: 50px;
     padding: 25px;
     margin: 0;
 }
+nav {
+    background-color:var(--bs-gray-700);
+    padding: 15px;
+}
+nav a {
+    color:var(--bs-blue-950);
+    text-decoration: none;
+    margin: 12px;
+    font-weight: 600;
+}
+nav a:hover {
+    color: white;
+}
 main {
-    background-color:white;
-    margin: 80px auto;
-    padding: 40px;
-    width: 60%;
+    background-color:var(--bs-blue-950);
+    margin: 60px auto;
+    padding: 90px;
+    width: 90%;
     border-radius: 50px;
-    border-top: 20px solid #D4AF37;
+    border-top: 20px solid var(--bs-gray-700);
 }
-
 h2 {
-    color: #B84A78;
-    font-size: 35px;
+    color:var(--bs-pink-700);
+    font-size: 30px;
 }
-
 p {
-    color:#B84A78;
-    font-size: 15px;
+    color:var(--bs-pink-700);
+    font-size: 25px;
     margin-bottom: 30px;
 }
-
+div {
+    background-color: white;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 10px;
+    border-top: 5px solid var(--bs-pink-700);
+}
+.card h1 {
+    color: var(--bs-pink-700);
+}
+.card h3 {
+    color:var(--bs-pink-700);
+}
+.card p {
+    color: var(--bs-pink-700);
+}
+sec{
+    background-color: white;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th {
+    background-color:var(--bs-pink-700);
+    color:var(--bs-white);
+    padding: 15px;
+}
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--bs-gray-700);
+    color:var(--bs-pink-700);
+}
 button {
-    background-color: #173B6C;
+    background-color: var(--bs-pink-700);
     color: white;
     border: none;
     padding: 12px 30px;
@@ -47,13 +94,22 @@ button {
     font-size: 15px;
     cursor: pointer;
 }
-
 button:hover {
-    background-color:#8B1538;
+    background-color:var(--bs-gray-700);
 }
-
 button a {
     color: white;
     text-decoration: none;
 }
-
+footer {
+    background-color:var(--bs-pink-700);
+    color:var(--bs-blue-950);
+    padding: 5px;
+}
+img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+    border-radius: 10px;
+}
