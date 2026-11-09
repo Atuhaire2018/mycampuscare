@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="trial.css">
+>>>>>>> 01abf34647d13fd81fdb70b652edfb55a1f15139
    </head>
 
 
@@ -86,18 +87,17 @@
     </section>
 
    <div id="site-footer"></div>
+=======
     <div id="site-footer"></div>
-
+>>>>>>> 01abf34647d13fd81fdb70b652edfb55a1f15139
 
   <script src="footer.js"></script>
 
-   <script>
-        let staffName = localStorage.getItem("staffName");
-        if (staffName) {
-            document.getElementById("welcomeMessage").innerHTML =
-            "Welcome, " + staffName + "!";
-        }
-    </script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    if (user) document.getElementById("userName").textContent = user.name;
+    document.getElementById("logoutBtn").addEventListener("click", logout);
+  </script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>

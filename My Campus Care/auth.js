@@ -1,13 +1,28 @@
-function requireRole(role) {
-  const user = JSON.parse(sessionStorage.getItem("user") || "null");
-  if (!user || user.role !== role) {
-    window.location.href = "home.html";
+const LOGIN_PAGE = "home_page2.0.html";
+
+function getUser() {
+  try {
+    return JSON.parse(sessionStorage.getItem("user") || "null");
+  } catch (e) {
     return null;
   }
-  return user;
+}
+
+function requireRole(role) {
+  const current = getUser();
+
+  if (!current || current.role !== role) {
+    window.location.replace(LOGIN_PAGE);
+    return null;
+  }
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted && !getUser()) window.location.replace(LOGIN_PAGE);
+  });
+
+  return current;
 }
 
 function logout() {
   sessionStorage.removeItem("user");
-  window.location.href = "home.html";
+  window.location.replace(LOGIN_PAGE);
 }
