@@ -1,6 +1,10 @@
+:root
+:host {--bs-blue-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.24 240deg));
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color:#173B6C;
+    background-color: var(--bs-blue-950);
     margin: 0;
     padding: 0;
     text-align: center;
