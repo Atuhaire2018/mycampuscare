@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="auth.js"></script>
+  <script>
+    constant user = requireRole("student");
+    </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +24,7 @@
 
          <a class="navbar-brand" href="#sticky-top">
           <img src="mycampuscare_logo.jpg" alt="LOGO" height="100">
-          <span> mycampuscare</span></a>
+          <span>mycampuscare</span></a>
 
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarMenu"
@@ -154,8 +158,8 @@
 
     const homePages = {
       student: "students2webpage.html",
-      staff:   "staff.html",
-      admin:   "administrationwebpage.html"
+      staff:   "staff_2homepage.html",
+      admin:   "admin.html"
     };
 
     document.getElementById("loginForm").addEventListener("submit", function (e) {
