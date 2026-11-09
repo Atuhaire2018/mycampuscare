@@ -53,6 +53,7 @@ th {
 td {
     padding: 12px;
     border: 1px solid white;
+    color: white
 }
 button {
     background-color: var(--bs-blue-950);
