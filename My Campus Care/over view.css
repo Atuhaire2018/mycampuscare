@@ -1,4 +1,9 @@
-body {
+
+:root
+:host {--bs-blue-950: color-mix(in oklch, var(--bs-black) 70%, oklch(60% 0.24 240deg));
+       --bs-gray-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.02 245deg));
+       --bs-pink-700: color-mix(in oklch, var(--bs-black) 32%, oklch(60% 0.22 4deg));
+}body {
     font-family: 'Poppins', sans-serif;
     background-color: #b0125b;;
     margin: 0;
