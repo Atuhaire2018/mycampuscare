@@ -3,7 +3,7 @@
         body {
             margin: 0;
             padding: 30px 15px;
-            background-color: #f7f5ef;
+            background-color: #474646;
             color: black;
             font-family: Arial, sans-serif;
         }
@@ -20,17 +20,17 @@
         }
 
         .header h1 {
-            color: #355e3b;
+            color: #7c085b;
             font-size: 30px;
         }
 
         .header p {
-            color: #555;
+            color: #79084c;
         }
 
         .container {
             display: flex;
-            background-color: offwhite;
+            background-color: gray-light;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -40,22 +40,21 @@
         .welcome-section {
             width: 40%;
             padding: 35px;
-            background-color: #46757F;
+            background-color: #090179;
             color: offwhite;
         }
 
         .welcome-section h2 {
-            color: white;
+            color: rgb(159, 158, 158);
             font-size: 27px;
         }
 
         .welcome-section p {
-            color : white;
+            color : rgb(160, 156, 156);
             line-height: 1.7;
             font-size: 15px;
         }
 
-        /* RIGHT SIDE FORM */
 
         .form-section {
             width: 60%;
@@ -64,7 +63,7 @@
 
         .form-section h2 {
             text-align: center;
-            color: #355e3b;
+            color: #70083e;
         }
 
         .form-section p {
@@ -84,16 +83,16 @@
         input, select {
             width: 100%;
             padding: 11px;
-            border: 1px solid #ccc;
+            border: 1px solid #5f5e5e;
             border-radius: 6px;
             box-sizing: border-box;
-            background-color: #f7f5ef;
+            background-color: #e7e7e5;
             font-size: 14px;
         }
 
         input:focus, select:focus {
             outline: none;
-            border: 2px solid #355e3b;
+            border: 2px solid #750b4b;
         }
 
 
@@ -111,7 +110,7 @@
         }
 
         button:hover {
-            background-color: #355e3b;
+            background-color: #011187;
             color: white;
         }
 
@@ -123,7 +122,7 @@
         }
 
         .login a {
-            color: #355e3b;
+            color: #08068c;
             font-weight: bold;
             text-decoration: none;
         }
@@ -134,7 +133,7 @@
             padding: 12px;
             margin-top: 15px;
             background-color: #eaf1e9;
-            color: #355e3b;
+            color: #a8a8a9;
             border-radius: 6px;
             text-align: center;
         }
