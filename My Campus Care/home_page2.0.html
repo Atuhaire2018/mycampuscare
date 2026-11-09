@@ -172,6 +172,7 @@
 
       const match = accounts.find(a => a.email === email && a.password === password);
       const role  = match ? match.role : "student";
+      
 
       sessionStorage.setItem("user", JSON.stringify({ name, email, role }));
       window.location.href = homePages[role];
