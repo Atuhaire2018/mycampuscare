@@ -32,10 +32,10 @@ nav a:hover {
 }
 main {
     background-color:var(--bs-blue-950);
-    margin: 60px auto;
+    margin: 30px auto;
     padding: 90px;
     width: 90%;
-    border-radius: 50px;
+    border-radius: 30px;
     border-top: 20px solid var(--bs-gray-700);
 }
 h2 {
