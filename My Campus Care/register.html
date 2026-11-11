@@ -181,12 +181,12 @@
         box.style.borderRadius = "4px";
     }
 
-    // Phone: digits only
+    
     form.phone.addEventListener("input", function () {
         this.value = this.value.replace(/\D/g, "");
     });
 
-    // The REGISTER text is a link inside the button, so make it submit the form instead of leaving the page
+    
     regLink.addEventListener("click", function (e) {
         e.preventDefault();
         if (form.requestSubmit) { form.requestSubmit(); }
