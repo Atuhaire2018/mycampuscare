@@ -29,7 +29,7 @@
 
         <div class="welcome-section">
 
-            <h2>Your Wellbeing Matters!</h2>
+            <h2>Your Physical Health and Mental Wellbeing Matters!</h2>
 
             <p>
                 Welcome to MyCampusCare.
@@ -79,6 +79,7 @@
                     type="text"
                     name="studentid"
                     placeholder="Enter your student ID"
+                    maxlength="8"
                     required
                 >
 
@@ -162,27 +163,68 @@
   <script src="footer.js"></script>
 
 </div>
- 
+ <script src="auth.js"></script>
 
 <script>
+    var form = document.getElementById("registrationForm");
+    var box  = document.getElementById("message");
+    var regLink = form.querySelector("button a");
+    var busy = false;
 
-    document.getElementById("registrationForm")
-    .addEventListener("submit", function(event) {
+    function showMsg(text, ok) {
+        box.textContent = text;
+        box.style.display = "block";
+        box.style.color = ok ? "#1d6b3a" : "#a8281f";
+        box.style.background = ok ? "#e8f4ec" : "#fbeceb";
+        box.style.padding = "10px 14px";
+        box.style.marginTop = "16px";
+        box.style.borderRadius = "4px";
+    }
 
-        event.preventDefault();
-
-        if (!this.checkValidity()) {
-
-            this.reportValidity();
-
-            return;
-
-        }
-
-        document.getElementById("message").style.display = "block";
-
+    // Phone: digits only
+    form.phone.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "");
     });
 
+    // The REGISTER text is a link inside the button, so make it submit the form instead of leaving the page
+    regLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (form.requestSubmit) { form.requestSubmit(); }
+        else { form.dispatchEvent(new Event("submit", { cancelable: true })); }
+    });
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (busy) { return; }
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        if (form.phone.value.length !== 10) {
+            showMsg("Enter a 10-digit phone number, for example 0700000000.", false);
+            return;
+        }
+
+        busy = true;
+
+        MCC.register({
+            fullName: form.fullname.value,
+            studentId: form.studentid.value,
+            email: form.email.value,
+            phone: form.phone.value,
+            gender: form.gender.value,
+            password: form.password.value
+        }).then(function () {
+            showMsg("Account created. Taking you to the login page...", true);
+            setTimeout(function () {
+                window.location.href = "home_page2.0.html?registered=1";
+            }, 1200);
+        }).catch(function (err) {
+            showMsg(err.message, false);
+            busy = false;
+        });
+    });
 </script>
 
 </body>
