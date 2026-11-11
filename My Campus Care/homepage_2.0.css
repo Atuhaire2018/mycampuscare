@@ -265,6 +265,7 @@ section { padding: 4rem 0; }
 
 #top {
   background-color: var(--mist);
+  margin: 10px;
 }
 
 
