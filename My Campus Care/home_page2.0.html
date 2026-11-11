@@ -144,7 +144,7 @@
   </footer>
 
  <script>
-  // Staff and admin keep their fixed accounts. Students must have registered.
+  
   const accounts = [
     { email: "nurse@ucu.ac.ug", password: "staff123", role: "staff" },
     { email: "admin@ucu.ac.ug", password: "admin123", role: "admin" }
@@ -185,7 +185,7 @@
     const email    = document.getElementById("email").value.trim().toLowerCase();
     const password = document.getElementById("password").value;
 
-    // 1. Staff / admin
+    
     const staff = accounts.find(a => a.email === email && a.password === password);
     if (staff) {
       sessionStorage.setItem("user", JSON.stringify({ name, email, role: staff.role }));
@@ -193,7 +193,7 @@
       return;
     }
 
-    // 2. Students: must match a registered account
+    
     MCC.login(email, password)
       .then(function (user) {
         sessionStorage.setItem("user", JSON.stringify({ name: user.fullName, email: user.email, role: "student" }));
