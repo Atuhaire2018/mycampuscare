@@ -56,13 +56,11 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
 th {
-    background-color: var(--bs-gray-700)
-    color: white;
-    padding: 15px;
+    background-color:var(--bs-gray-700);
+    color:var(--bs-white);
+    padding: 15px
 }
-
 td {
     padding: 15px;
     border-bottom: 1px solid var(--bs-gray-700);
@@ -85,4 +83,11 @@ footer {
     background-color: var(--bs-gray-700);
     color: white;
     padding: 15px;
+}
+img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 30px auto;
+    border-radius: 10px
 }
