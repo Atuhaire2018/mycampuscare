@@ -12,10 +12,7 @@
 <link rel="stylesheet" href="trial.css">
 
 
-
-
-   </head>
-
+</head>
 
 <body>
     <header>
@@ -24,11 +21,16 @@
             <a href="home_page2.0.html" class="btn btn-return"><i class="fa-solid fa-house me-2"></i>Return to Main Homepage</a>
     </header>
 
-    <nav>
-        <button id="appt"><a href="appointments.html">Appointments</a></nav></button>
-        <button><a href="availability.html">My Availability</a></button>
-        <button><a href="records.html">Students' Records</a></button>
-    </nav>
+    <nav class="menu-bar" aria-label="Staff menu">
+    <div class="container">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="appointments.html"><i class="fa-regular fa-calendar-days"></i>Appointments</a></li>
+        <li class="nav-item"><a class="nav-link active" href="availability.html"><i class="fa-regular fa-clock"></i>My Availability</a></li>
+        <li class="nav-item"><a class="nav-link" href="records.html"><i class="fa-solid fa-user-group"></i>Students' Records</a></li>
+      </ul>
+    </div>
+  </nav>
+
 
     <section class="welcome-section">
         <h2 id="welcomeMessage">

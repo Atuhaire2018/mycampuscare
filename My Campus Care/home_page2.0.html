@@ -31,7 +31,7 @@
 
         <div class="collapse navbar-collapse" id="navbarMenu">
           <ul class="navbar-nav ms-md-auto align-items-md-center">
-            <li class="nav-item"><a class="nav-link" href="About Our Project.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="about our project.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="services2.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="contact_page.html">Contacts</a></li>
             <li class="nav-item nav-divider d-none d-md-block"></li>
@@ -52,7 +52,7 @@
         <h1>Welcome to <br><span>MyCampusCare</span></h1>
         <p class="hero-tagline"> Your Physical and Mental Health matter. </p>
         <p class="hero-text">
-          Your university clinic and counselling appointmentportal. <br>
+          Your university clinic and counseling appointmentportal. <br>
           A healthier campus begins with accessible healthcare and mental wellness services.
           Book appointments, check staff availability and access the care you deserve.
         </p>
@@ -87,8 +87,8 @@
             <div class="dept-body">
               <div class="dept-icon"><i class="fa-solid fa-heart-pulse"></i></div>
               <div>
-                <h3>Counselling Department</h3>
-                <p>Access mental health support, counselling sessions and emotional wellness services.</p>
+                <h3>Counseling Department</h3>
+                <p>Access mental health support, counseling sessions and emotional wellness services.</p>
               </div>
             </div>
           </article>
@@ -150,33 +150,11 @@
     { email: "admin@ucu.ac.ug", password: "admin123", role: "admin" }
   ];
 
-  const homePages = {
-    student: "students2webpage.html",
-    staff:   "staff_homepage.html",
-    admin:   "admin.html"
-  };
-
-  function showLoginMessage(text, ok) {
-    let box = document.getElementById("loginMessage");
-    const form = document.getElementById("loginForm");
-    if (!box) {
-      box = document.createElement("div");
-      box.id = "loginMessage";
-      box.setAttribute("role", "alert");
-      box.style.cssText = "padding:10px 14px;margin-bottom:16px;border-radius:4px;border-left:4px solid;font-size:0.95rem;";
-      form.parentNode.insertBefore(box, form);
-    }
-    box.textContent = text;
-    box.style.display = "block";
-    box.style.color = ok ? "#1d6b3a" : "#a8281f";
-    box.style.background = ok ? "#e8f4ec" : "#fbeceb";
-    box.style.borderColor = ok ? "#1d6b3a" : "#a8281f";
-  }
-
-  if (new URLSearchParams(window.location.search).get("registered") === "1") {
-    showLoginMessage("Account created. Sign in with your email and password.", true);
-    document.getElementById("login").scrollIntoView();
-  }
+    const homePages = {
+      student: "students2webpage.html",
+      staff:   "staff_homepage.html",
+      admin:   "admin.html"
+    };
 
   document.getElementById("loginForm").addEventListener("submit", function (e) {
     e.preventDefault();

@@ -1,9 +1,8 @@
-<style>
 
         body {
             margin: 0;
             padding: 30px 15px;
-            background-color: #474646;
+            background-color: #04048a;
             color: black;
             font-family: Arial, sans-serif;
         }
@@ -20,17 +19,17 @@
         }
 
         .header h1 {
-            color: #7c085b;
+            color: #ebe6ea;
             font-size: 30px;
         }
 
         .header p {
-            color: #79084c;
+            color: #e7e3e5;
         }
 
         .container {
             display: flex;
-            background-color: gray-light;
+            background-color: gray;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -40,17 +39,17 @@
         .welcome-section {
             width: 40%;
             padding: 35px;
-            background-color: #090179;
+            background-color: #870b3b;
             color: offwhite;
         }
 
         .welcome-section h2 {
-            color: rgb(159, 158, 158);
+            color: rgb(234, 231, 232);
             font-size: 27px;
         }
 
         .welcome-section p {
-            color : rgb(160, 156, 156);
+            color : rgb(236, 231, 231);
             line-height: 1.7;
             font-size: 15px;
         }
@@ -132,8 +131,8 @@
             display: none;
             padding: 12px;
             margin-top: 15px;
-            background-color: #eaf1e9;
-            color: #a8a8a9;
+            background-color: pink;
+            color: pink;
             border-radius: 6px;
             text-align: center;
         }
@@ -159,5 +158,3 @@
             }
 
         }
-
-    </style>
