@@ -119,7 +119,7 @@
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" autofocus name="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="password" autofocus name="password" minlength="8" class="form-control" placeholder="Password(min 8 characters)" required>
           </div>
 
           <div class="form-check form-switch mb-4">
@@ -144,7 +144,7 @@
  <script>
   
   const accounts = [
-    { email: "nurse@ucu.ac.ug", password: "staff123", role: "staff" },
+    { email: "staff@ucu.ac.ug", password: "staff123", role: "staff" },
     { email: "admin@ucu.ac.ug", password: "admin123", role: "admin" }
   ];
 
