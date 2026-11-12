@@ -70,22 +70,22 @@
         <form id="loginForm" action="#" method="post">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" id="name" name="name" class="form-control" autocomplete="name" placeholder="Name" required>
+            <input type="text" id="name" name="name" autofocus class="form-control" autocomplete="name" placeholder="Name" required>
           </div>
 
           <div class="mb-3">
             <label for="number" class="form-label">Phone number</label>
-            <input type="tel" id="number" name="number" class="form-control" autocomplete="tel" placeholder="Phone number" required>
+            <input type="tel" id="number" name="number" autofocus maxlength="6" class="form-control" autocomplete="tel" placeholder="Phone number" required>
           </div>
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-control" autocomplete="email" placeholder="Email" required>
+            <input type="email" id="email" name="email" autofocus class="form-control" autocomplete="email" placeholder="Email" required>
           </div>
 
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" id="password" name="password" autofocus class="form-control" placeholder="Password" required>
           </div>
 
           <div class="form-check form-switch mb-4">
@@ -159,7 +159,7 @@
   const homePages = {
     student: "studentswebpage.html",
     staff:   "staff.html",
-    admin:   "administrationwebpage.html"
+    admin:   "admin.html"
   };
 
   document.getElementById("loginForm").addEventListener("submit", function (e) {
