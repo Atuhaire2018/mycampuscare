@@ -69,7 +69,7 @@
 
         <div class="col-lg-6">
           <article class="dept-card dept-hospital">
-            <div class="dept-photo" role="hospital_image.jpg" aria-label="Hospital department"></div>
+            <div class="dept-photo" role="images/hospital_image.jpg" aria-label="Hospital department"></div>
             <div class="dept-body">
               <div class="dept-icon"><i class="fa-solid fa-hospital"></i></div>
               <div>
@@ -82,7 +82,7 @@
 
         <div class="col-lg-6">
           <article class="dept-card dept-counselling">
-            <div class="dept-photo" role="img" aria-label="Counselling department"></div>
+            <div class="dept-photo" role="images/counselling_image.jpg" aria-label="Counselling department"></div>
             <div class="dept-body">
               <div class="dept-icon"><i class="fa-solid fa-heart-pulse"></i></div>
               <div>
@@ -148,7 +148,7 @@
   <script>
     const accounts = [
       { email: "student@ucu.ac.ug", role: "student" },
-      { email: "nurse@ucu.ac.ug", password: "staff123", role: "staff" },
+      { email: "staff@ucu.ac.ug", password: "staff123", role: "staff" },
       { email: "admin@ucu.ac.ug", password: "admin123", role: "admin" }
     ];
 
@@ -167,6 +167,7 @@
 
       const match = accounts.find(a => a.email === email && a.password === password);
       const role  = match ? match.role : "student";
+      
 
       sessionStorage.setItem("user", JSON.stringify({ name, email, role }));
       window.location.href = homePages[role];
